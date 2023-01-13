@@ -1,0 +1,39 @@
+CREATE DATABASE CatalogoVeiculo
+USE CatalogoVeiculo
+
+CREATE TABLE Usuario(
+	UsuarioId INT IDENTITY(1,1) NOT NULL,
+	Nome VARCHAR(30) NOT NULL,
+	LoginUsuario VARCHAR(10) NOT NULL UNIQUE,
+	Senha VARCHAR(10) NOT NULL,
+	Administrador bit NOT NULL,
+	CONSTRAINT PK_UsuarioId PRIMARY KEY(UsuarioId)
+)
+
+CREATE TABLE Marca(
+	MarcaId INT IDENTITY(1,1) NOT NULL,
+	NomeMarca VARCHAR(10) NOT NULL,
+	CONSTRAINT PK_MarcaId PRIMARY KEY(MarcaId)
+)
+
+CREATE TABLE Modelo(
+	ModeloId INT IDENTITY(1,1) NOT NULL,
+	NomeModelo VARCHAR(15) NOT NULL,
+	MarcaId INT NOT NULL,
+	CONSTRAINT PK_ModeloId PRIMARY KEY(ModeloId),
+	CONSTRAINT FK_Modelo_Marca FOREIGN KEY (MarcaId) REFERENCES Marca (MarcaId),
+)
+
+CREATE TABLE Veiculo(
+	VeiculoId INT IDENTITY(1,1) NOT NULL,
+	Nome VARCHAR(20) NOT NULL,
+	Foto VARCHAR(60) NOT NULL,
+	Preco DECIMAL(10, 2) NOT NULL,
+	DataCriacao Date NOT NULL,
+	DataAtualizacao Date NOT NULL,
+	ModeloId INT NOT NULL,
+	UsuarioId INT NOT NULL,
+	CONSTRAINT PK_VeiculoId PRIMARY KEY(VeiculoId),
+	CONSTRAINT FK_Veiculo_Modelo FOREIGN KEY (ModeloId) REFERENCES Modelo (ModeloId),
+	CONSTRAINT FK_Veiculo_Usuario FOREIGN KEY (UsuarioId) REFERENCES Usuario (UsuarioId)
+)

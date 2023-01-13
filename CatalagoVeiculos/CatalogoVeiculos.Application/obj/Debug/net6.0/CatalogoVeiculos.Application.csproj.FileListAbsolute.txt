@@ -1,0 +1,5 @@
+D:\Dev\Catalogo-de-Veiculos\CatalagoVeiculos\CatalogoVeiculos.Application\obj\Debug\net6.0\CatalogoVeiculos.Application.csproj.AssemblyReference.cache
+D:\Dev\Catalogo-de-Veiculos\CatalagoVeiculos\CatalogoVeiculos.Application\obj\Debug\net6.0\CatalogoVeiculos.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\Catalogo-de-Veiculos\CatalagoVeiculos\CatalogoVeiculos.Application\obj\Debug\net6.0\CatalogoVeiculos.Application.AssemblyInfoInputs.cache
+D:\Dev\Catalogo-de-Veiculos\CatalagoVeiculos\CatalogoVeiculos.Application\obj\Debug\net6.0\CatalogoVeiculos.Application.AssemblyInfo.cs
+D:\Dev\Catalogo-de-Veiculos\CatalagoVeiculos\CatalogoVeiculos.Application\obj\Debug\net6.0\CatalogoVeiculos.Application.csproj.CoreCompileInputs.cache

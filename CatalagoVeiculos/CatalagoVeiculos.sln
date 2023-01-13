@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - CatalogoVeiculos.API", "1 - CatalogoVeiculos.API", "{0D82090E-185C-43F4-903A-911F1A99095A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - CatalogoVeiculos.Application", "2 - CatalogoVeiculos.Application", "{E07B72E3-EE13-4393-8361-E40E4FD51F5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - CatalogoVeiculos.Domain", "3 - CatalogoVeiculos.Domain", "{12BA55BA-6922-4770-A48D-569E0C2B9771}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - CatalogoVeiculos.Infra", "4 - CatalogoVeiculos.Infra", "{D2D95A64-C605-4A2E-887C-49538ECD5F5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoVeiculos.API", "CatalogoVeiculos.API\CatalogoVeiculos.API.csproj", "{9513EF1C-47E9-489B-9E04-44FCDF927449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoVeiculos.Application", "CatalogoVeiculos.Application\CatalogoVeiculos.Application.csproj", "{2F835774-E26F-43B3-BCE3-3735ADDE5839}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoVeiculos.Domain", "CatalogoVeiculos.Domain\CatalogoVeiculos.Domain.csproj", "{C92C54DC-5316-4D2F-8A00-DF63B5C08F7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - CatalogoVeiculos.Infra.Data", "4.1 - CatalogoVeiculos.Infra.Data", "{0B3120ED-05AB-4210-9DEF-F7A961E9D33D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CatalogoVeiculos.Infra.CrossCutting", "4.2 - CatalogoVeiculos.Infra.CrossCutting", "{D00F3BE8-E359-4D97-9961-FC957370A62C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoVeiculos.Infra.Data", "CatalogoVeiculos.Infra.Data\CatalogoVeiculos.Infra.Data.csproj", "{56B56B7B-9F24-4668-AF1F-934BD43E9A26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.2 - CatalogoVeiculos.Infra.CrossCutting", "4.2 - CatalogoVeiculos.Infra.CrossCutting\4.2 - CatalogoVeiculos.Infra.CrossCutting.csproj", "{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9513EF1C-47E9-489B-9E04-44FCDF927449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9513EF1C-47E9-489B-9E04-44FCDF927449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9513EF1C-47E9-489B-9E04-44FCDF927449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9513EF1C-47E9-489B-9E04-44FCDF927449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F835774-E26F-43B3-BCE3-3735ADDE5839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F835774-E26F-43B3-BCE3-3735ADDE5839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F835774-E26F-43B3-BCE3-3735ADDE5839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F835774-E26F-43B3-BCE3-3735ADDE5839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C92C54DC-5316-4D2F-8A00-DF63B5C08F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C92C54DC-5316-4D2F-8A00-DF63B5C08F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C92C54DC-5316-4D2F-8A00-DF63B5C08F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C92C54DC-5316-4D2F-8A00-DF63B5C08F7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56B56B7B-9F24-4668-AF1F-934BD43E9A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56B56B7B-9F24-4668-AF1F-934BD43E9A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56B56B7B-9F24-4668-AF1F-934BD43E9A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56B56B7B-9F24-4668-AF1F-934BD43E9A26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9513EF1C-47E9-489B-9E04-44FCDF927449} = {0D82090E-185C-43F4-903A-911F1A99095A}
+		{2F835774-E26F-43B3-BCE3-3735ADDE5839} = {E07B72E3-EE13-4393-8361-E40E4FD51F5E}
+		{C92C54DC-5316-4D2F-8A00-DF63B5C08F7A} = {12BA55BA-6922-4770-A48D-569E0C2B9771}
+		{0B3120ED-05AB-4210-9DEF-F7A961E9D33D} = {D2D95A64-C605-4A2E-887C-49538ECD5F5E}
+		{D00F3BE8-E359-4D97-9961-FC957370A62C} = {D2D95A64-C605-4A2E-887C-49538ECD5F5E}
+		{56B56B7B-9F24-4668-AF1F-934BD43E9A26} = {0B3120ED-05AB-4210-9DEF-F7A961E9D33D}
+		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF} = {D00F3BE8-E359-4D97-9961-FC957370A62C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4AAF915-01D6-483D-A961-0877930374E9}
+	EndGlobalSection
+EndGlobal
