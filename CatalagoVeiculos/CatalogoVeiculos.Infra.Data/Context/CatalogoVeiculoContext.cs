@@ -13,7 +13,10 @@ namespace CatalogoVeiculos.Infra.Data.Context
 
         public string GetConnection()
         {
-            var connectionString = _configuration.GetConnectionString("CatalogoVeiculos");
+            var connectionString = _configuration.GetSection("ConnectionStrings").GetSection("Connection").Value;
+            if (connectionString == null)
+                throw new ArgumentException("Não foi possivel obter a conexão com o banco de dados");
+
             return connectionString;
         }
 

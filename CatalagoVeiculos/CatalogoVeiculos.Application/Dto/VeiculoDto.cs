@@ -10,5 +10,8 @@
         public DateTime DataAtualizacao { get; set; }
         public int ModeloId { get; set; }
         public int UsuarioId { get; set; }
+
+        public virtual ModeloDto Modelo { get; set; }
+        public virtual UsuarioDto Usuario { get; set; }
     }
 }

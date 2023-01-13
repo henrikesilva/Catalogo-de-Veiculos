@@ -20,6 +20,7 @@ namespace CatalogoVeiculos.Domain.Services
 
         public async Task<bool> CadastrarVeiculo(Veiculo veiculo)
         {
+            //fazer o cadastro da marca e do modelo antes
             var veiculoCadastrado = await _veiculoRepository.CadastrarVeiculo(veiculo);
             return veiculoCadastrado;
         }

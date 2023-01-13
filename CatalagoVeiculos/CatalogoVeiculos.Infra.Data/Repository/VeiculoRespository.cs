@@ -31,7 +31,46 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 
         private string excluirVeiculo = @"DELETE FROM Veiculo WHERE VeiculoId = @VeiculoId";
 
-        //private string buscarVeiculo = @"";
+        private string buscarVeiculoPorId = @"SELECT 
+	                                                VE.VeiculoId,
+	                                                VE.Nome,
+	                                                VE.Foto,
+	                                                VE.Preco,
+	                                                VE.DataCriacao,
+	                                                VE.DataAtualizacao,
+	                                                MO.ModeloId,
+	                                                MO.NomeModelo,
+	                                                MA.MarcaId,
+	                                                MA.NomeMarca,
+	                                                US.UsuarioId,
+	                                                US.Nome
+                                                FROM
+	                                                Veiculo AS VE
+	                                                INNER JOIN Modelo AS MO ON MO.ModeloId = VE.ModeloId
+	                                                INNER JOIN Marca AS MA ON MA.MarcaId = MO.MarcaId
+	                                                INNER JOIN Usuario AS US ON US.UsuarioId = VE.UsuarioId
+                                                WHERE
+	                                                VE.VeiculoId = @VeiculoId";
+
+        private string buscarVeiculos = @"SELECT 
+	                                            VE.VeiculoId,
+	                                            VE.Nome,
+	                                            VE.Foto,
+	                                            VE.Preco,
+	                                            VE.DataCriacao,
+	                                            VE.DataAtualizacao,
+	                                            MO.ModeloId,
+	                                            MO.NomeModelo,
+	                                            MA.MarcaId,
+	                                            MA.NomeMarca,
+	                                            US.UsuarioId,
+	                                            US.Nome
+                                            FROM
+	                                            Veiculo AS VE
+	                                            INNER JOIN Modelo AS MO ON MO.ModeloId = VE.ModeloId
+	                                            INNER JOIN Marca AS MA ON MA.MarcaId = MO.MarcaId
+	                                            INNER JOIN Usuario AS US ON US.UsuarioId = VE.UsuarioId
+	                                            ORDER BY VE.Preco DESC";
         #endregion
 
         private string connection;
@@ -127,16 +166,27 @@ namespace CatalogoVeiculos.Infra.Data.Repository
             {
                 using (var con = new SqlConnection(connection))
                 {
-                    var veiculoExcluido = await con.QueryAsync(excluirVeiculo,
-                                                                new
-                                                                {
-                                                                    VeiculoId = veiculo.VeiculoId
-                                                                });
+                    var veiculo = await con.QueryAsync<Veiculo, Modelo, Marca, Usuario, Veiculo>
+                                                        (buscarVeiculoPorId, (Veiculo, Modelo, Marca, Usuario) =>
+                                                        {
+                                                            Veiculo.Modelo = Modelo;
+                                                            Veiculo.Modelo.Marca = Marca;
+                                                            Veiculo.Usuario = Usuario;
 
-                    if (veiculoExcluido == 1)
-                        return true;
+                                                            return Veiculo;
+                                                        }, 
+                                                        new 
+                                                        { 
+                                                            VeiculoId = veiculoId 
+                                                        },
+                                                        splitOn: "ModeloId, MarcaId, UsuarioId");
 
-                    return false;
+                    if (veiculo.Any())
+                    {
+                        return veiculo.FirstOrDefault();
+                    }
+
+                    return new Veiculo();
                 }
             }
             catch(SqlException ex)
@@ -145,9 +195,35 @@ namespace CatalogoVeiculos.Infra.Data.Repository
             }
         }
 
-        public Task<List<Veiculo>> SelecionarVeiculos()
+        public async Task<List<Veiculo>> SelecionarVeiculos()
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var con = new SqlConnection(connection))
+                {
+                    var veiculo = await con.QueryAsync<Veiculo, Modelo, Marca, Usuario, Veiculo>
+                                                        (buscarVeiculos, (Veiculo, Modelo, Marca, Usuario) =>
+                                                        {
+                                                            Veiculo.Modelo = Modelo;
+                                                            Veiculo.Modelo.Marca = Marca;
+                                                            Veiculo.Usuario = Usuario;
+
+                                                            return Veiculo;
+                                                        },
+                                                        splitOn: "ModeloId, MarcaId, UsuarioId");
+
+                    if (veiculo.Any())
+                    {
+                        return veiculo.ToList();
+                    }
+
+                    return new List<Veiculo>();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
         }
     }
 }

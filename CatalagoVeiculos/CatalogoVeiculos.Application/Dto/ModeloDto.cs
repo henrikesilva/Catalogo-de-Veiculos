@@ -5,5 +5,7 @@
         public int ModeloId { get; set; }
         public string NomeModelo { get; set; }
         public int MarcaId { get; set; }
+
+        public virtual MarcaDto Marca { get; set; }
     }
 }

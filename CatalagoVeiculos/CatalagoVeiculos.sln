@@ -11,19 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - CatalogoVeiculos.Domain
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - CatalogoVeiculos.Infra", "4 - CatalogoVeiculos.Infra", "{D2D95A64-C605-4A2E-887C-49538ECD5F5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoVeiculos.API", "CatalogoVeiculos.API\CatalogoVeiculos.API.csproj", "{9513EF1C-47E9-489B-9E04-44FCDF927449}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogoVeiculos.API", "CatalogoVeiculos.API\CatalogoVeiculos.API.csproj", "{9513EF1C-47E9-489B-9E04-44FCDF927449}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoVeiculos.Application", "CatalogoVeiculos.Application\CatalogoVeiculos.Application.csproj", "{2F835774-E26F-43B3-BCE3-3735ADDE5839}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogoVeiculos.Application", "CatalogoVeiculos.Application\CatalogoVeiculos.Application.csproj", "{2F835774-E26F-43B3-BCE3-3735ADDE5839}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoVeiculos.Domain", "CatalogoVeiculos.Domain\CatalogoVeiculos.Domain.csproj", "{C92C54DC-5316-4D2F-8A00-DF63B5C08F7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogoVeiculos.Domain", "CatalogoVeiculos.Domain\CatalogoVeiculos.Domain.csproj", "{C92C54DC-5316-4D2F-8A00-DF63B5C08F7A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - CatalogoVeiculos.Infra.Data", "4.1 - CatalogoVeiculos.Infra.Data", "{0B3120ED-05AB-4210-9DEF-F7A961E9D33D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CatalogoVeiculos.Infra.CrossCutting", "4.2 - CatalogoVeiculos.Infra.CrossCutting", "{D00F3BE8-E359-4D97-9961-FC957370A62C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoVeiculos.Infra.Data", "CatalogoVeiculos.Infra.Data\CatalogoVeiculos.Infra.Data.csproj", "{56B56B7B-9F24-4668-AF1F-934BD43E9A26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogoVeiculos.Infra.Data", "CatalogoVeiculos.Infra.Data\CatalogoVeiculos.Infra.Data.csproj", "{56B56B7B-9F24-4668-AF1F-934BD43E9A26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.2 - CatalogoVeiculos.Infra.CrossCutting", "4.2 - CatalogoVeiculos.Infra.CrossCutting\4.2 - CatalogoVeiculos.Infra.CrossCutting.csproj", "{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogoVeiculos.Infra.CrossCutting", "CatalogoVeiculos.Infra.CrossCutting\CatalogoVeiculos.Infra.CrossCutting.csproj", "{468E52C7-43A8-400B-A32E-A85EE44A9E95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{56B56B7B-9F24-4668-AF1F-934BD43E9A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56B56B7B-9F24-4668-AF1F-934BD43E9A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56B56B7B-9F24-4668-AF1F-934BD43E9A26}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{468E52C7-43A8-400B-A32E-A85EE44A9E95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{468E52C7-43A8-400B-A32E-A85EE44A9E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{468E52C7-43A8-400B-A32E-A85EE44A9E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{468E52C7-43A8-400B-A32E-A85EE44A9E95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,7 +62,7 @@ Global
 		{0B3120ED-05AB-4210-9DEF-F7A961E9D33D} = {D2D95A64-C605-4A2E-887C-49538ECD5F5E}
 		{D00F3BE8-E359-4D97-9961-FC957370A62C} = {D2D95A64-C605-4A2E-887C-49538ECD5F5E}
 		{56B56B7B-9F24-4668-AF1F-934BD43E9A26} = {0B3120ED-05AB-4210-9DEF-F7A961E9D33D}
-		{D579C0EF-EAAF-451D-ABB8-7CEC5C9B97FF} = {D00F3BE8-E359-4D97-9961-FC957370A62C}
+		{468E52C7-43A8-400B-A32E-A85EE44A9E95} = {D00F3BE8-E359-4D97-9961-FC957370A62C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4AAF915-01D6-483D-A961-0877930374E9}
