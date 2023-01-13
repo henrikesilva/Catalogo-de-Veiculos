@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace CatalogoVeiculos.Infra.Data.Repository
 {
-    public class VeiculoRespository : CatalogoVeiculoContext, IVeiculoRepository
+    public class VeiculoRepository : CatalogoVeiculoContext, IVeiculoRepository
     {
         #region [QUERYS do banco]
         private string atualizarVeiculo = @"UPDATE
@@ -74,7 +74,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
         #endregion
 
         private string connection;
-        public VeiculoRespository(IConfiguration configuration) : base(configuration)
+        public VeiculoRepository(IConfiguration configuration) : base(configuration)
         {
             connection = this.GetConnection();
         }
@@ -117,6 +117,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                                                 new
                                                                 {
                                                                     UsuarioId = veiculo.UsuarioId,
+                                                                    Nome = veiculo.Nome,
                                                                     Foto = veiculo.Foto,
                                                                     Preco = veiculo.Preco,
                                                                     DataCriacao = veiculo.DataCriacao,

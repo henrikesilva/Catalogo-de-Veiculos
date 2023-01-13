@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gWIx9+dCqtdxZJec0/REhpVbtdcnRJLJ7wix5V41PpUTVonYJuSDF/eeV8LVdVoQiHWPoskppVMlqoFvNEDpbw==",
+  "dgSpecHash": "oWx5fZGN1OYx+nTDYABrcTjS4ikH+xICSauEVde4TIsSjkftE8jmvf8NDy2Bt+/FIH9N53XIcKdBRJJYJ27o8w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj",
+  "projectFilePath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rique\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"

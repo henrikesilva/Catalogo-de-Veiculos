@@ -2,7 +2,7 @@
 {
     public class VeiculoDto
     {
-        public int VeiculoId { get; set; }
+        public int? VeiculoId { get; set; }
         public string Nome { get; set; }
         public string Foto { get; set; }
         public decimal Preco { get; set; }
@@ -12,6 +12,6 @@
         public int UsuarioId { get; set; }
 
         public virtual ModeloDto Modelo { get; set; }
-        public virtual UsuarioDto Usuario { get; set; }
+        public virtual UsuarioDto? Usuario { get; set; }
     }
 }

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj",
+      "projectUniqueName": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj",
       "projectName": "CatalogoVeiculos.Domain",
-      "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj",
+      "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj",
       "packagesPath": "C:\\Users\\rique\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\obj\\",
+      "outputPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rique\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

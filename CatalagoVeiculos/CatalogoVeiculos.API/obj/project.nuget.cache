@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MrXOjmGTGcb/1QSQ4aK6qGpi3hpHxm4GTKWRa846UXrJkCaWwpaai3QPYIK/UjfaqNJIQDn1FP8hHSvYXBF78g==",
+  "dgSpecHash": "r46u/fp7KoAyN2thI6txqQZv0eg94zrzV43r1RlSLg7iYKllzUDd9LZaa1YZkUrGFRlmE+X8Hk4J9M+TqzhaYA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj",
+  "projectFilePath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rique\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

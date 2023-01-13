@@ -1,8 +1,8 @@
 ﻿using CatalogoVeiculos.Domain.Entities;
 
-namespace CatalogoVeiculos.Domain.Interfaces.Repository
+namespace CatalogoVeiculos.Domain.Interfaces.Services
 {
-    public interface IMarcaRepository
+    public interface IMarcaService
     {
         Task<bool> CadastrarMarca(Marca marca);
         Task<bool> AtualizarMarca(Marca marca);

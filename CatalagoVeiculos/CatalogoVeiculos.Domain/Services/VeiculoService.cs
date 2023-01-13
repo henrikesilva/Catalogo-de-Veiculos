@@ -7,9 +7,12 @@ namespace CatalogoVeiculos.Domain.Services
     public class VeiculoService : IVeiculoService
     {
         private readonly IVeiculoRepository _veiculoRepository;
-        public VeiculoService(IVeiculoRepository veiculoRepository)
+        private readonly IModeloService _modeloService;
+
+        public VeiculoService(IVeiculoRepository veiculoRepository, IModeloService modeloService)
         {
             _veiculoRepository = veiculoRepository;
+            _modeloService = modeloService;
         }
 
         public async Task<bool> AtualizarCadastroVeiculo(Veiculo veiculo)
@@ -20,7 +23,15 @@ namespace CatalogoVeiculos.Domain.Services
 
         public async Task<bool> CadastrarVeiculo(Veiculo veiculo)
         {
-            //fazer o cadastro da marca e do modelo antes
+            /*var marcaCadastrada = await _marcaService.BuscarMarca(veiculo.Modelo.Marca.MarcaId);
+            if(marcaCadastrada.MarcaId == 0)
+                return false;*/
+
+            var modeloCadastrado = await _modeloService.BuscarModelo(veiculo.ModeloId);
+            if (modeloCadastrado.ModeloId == 0)
+                return false;
+
+
             var veiculoCadastrado = await _veiculoRepository.CadastrarVeiculo(veiculo);
             return veiculoCadastrado;
         }
