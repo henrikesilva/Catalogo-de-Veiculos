@@ -1,5 +1,11 @@
 ﻿using AutoMapper;
+using CatalogoVeiculos.Application.Config;
+using CatalogoVeiculos.Application.Dto;
 using CatalogoVeiculos.Infra.CrossCutting;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Text;
 
 namespace CatalogoVeiculos.API
 {
@@ -30,7 +36,41 @@ namespace CatalogoVeiculos.API
             services.AddControllers();
             
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(config =>
+            {
+                config.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Catalogo de Veiculos",
+                    Description = "Desenvolvido como parte de desenvolvimento de avaliação técnica",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Henrique da Silva Lima",
+                        Email = "henrikelima.0502@gmail.com",
+                        Url = new Uri("https://henriquelima.netlify.app")
+                    }
+                });
+                
+                config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Informe o token gerado no login",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
+                });
+
+                config.AddSecurityRequirement(new OpenApiSecurityRequirement{
+                    {
+                        new OpenApiSecurityScheme{
+                        Reference = new OpenApiReference {
+                            Id = "Bearer",
+                            Type = ReferenceType.SecurityScheme
+                        }
+                    },
+                        new List<string>()
+                    }
+                });
+            });
 
             services.AddCors(opt =>
             {
@@ -41,6 +81,25 @@ namespace CatalogoVeiculos.API
                            .AllowAnyMethod();
                 });
             });
+
+            var key = Encoding.ASCII.GetBytes(Auth.secret);
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(auth =>
+                {
+                    auth.RequireHttpsMetadata = false;
+                    auth.SaveToken = true;
+                    auth.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = false,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
 
         }
 
@@ -53,7 +112,7 @@ namespace CatalogoVeiculos.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllers();

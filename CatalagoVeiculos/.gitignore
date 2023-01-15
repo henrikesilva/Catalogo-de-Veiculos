@@ -258,5 +258,3 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-/CatalagoVeiculos/.vs/CatalagoVeiculos/v17/.suo
-/CatalagoVeiculos/.vs/CatalagoVeiculos/DesignTimeBuild/.dtbcache.v2

@@ -15,14 +15,17 @@ namespace CatalogoVeiculos.Infra.CrossCutting
             serviceCollection.AddTransient<IVeiculosAppService, VeiculosAppService>();
             serviceCollection.AddTransient<IMarcaAppService, MarcaAppService>();
             serviceCollection.AddTransient<IModeloAppService, ModeloAppService>();
+            serviceCollection.AddTransient<IUsuarioAppService, UsuarioAppService>();
 
             serviceCollection.AddTransient<IVeiculoService, VeiculoService>();
             serviceCollection.AddTransient<IMarcaService, MarcaService>();
             serviceCollection.AddTransient<IModeloService, ModeloService>();
+            serviceCollection.AddTransient<IUsuarioService, UsuarioService>();
 
             serviceCollection.AddTransient<IVeiculoRepository, VeiculoRepository>();
             serviceCollection.AddTransient<IMarcaRepository, MarcaRepository>();
             serviceCollection.AddTransient<IModeloRepository, ModeloRepository>();
+            serviceCollection.AddTransient<IUsuarioRepository, UsuarioRepository>();
         }
     }
 }

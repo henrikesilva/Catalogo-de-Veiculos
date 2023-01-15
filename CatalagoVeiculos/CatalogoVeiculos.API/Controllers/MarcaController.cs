@@ -1,11 +1,13 @@
 ﻿using CatalogoVeiculos.Application.Dto;
 using CatalogoVeiculos.Application.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace CatalogoVeiculos.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class MarcaController : ControllerBase
     {
