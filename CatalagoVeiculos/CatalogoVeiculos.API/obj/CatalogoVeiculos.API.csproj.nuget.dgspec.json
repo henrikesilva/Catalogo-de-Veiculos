@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj": {}
+    "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj": {}
   },
   "projects": {
-    "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj": {
+    "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj",
+        "projectUniqueName": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj",
         "projectName": "CatalogoVeiculos.API",
-        "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj",
+        "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\CatalogoVeiculos.API.csproj",
         "packagesPath": "C:\\Users\\rique\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\obj\\",
+        "outputPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rique\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj": {
-                "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj"
+              "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj": {
+                "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj"
               }
             }
           }
@@ -44,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.17.0, )"
@@ -76,18 +80,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj": {
+    "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj",
+        "projectUniqueName": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj",
         "projectName": "CatalogoVeiculos.Application",
-        "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj",
+        "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj",
         "packagesPath": "C:\\Users\\rique\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\obj\\",
+        "outputPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rique\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,8 +108,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj": {
-                "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj"
+              "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj": {
+                "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj"
               }
             }
           }
@@ -123,6 +127,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[12.0.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.25.1, )"
             }
           },
           "imports": [
@@ -141,18 +149,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj": {
+    "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj",
         "projectName": "CatalogoVeiculos.Domain",
-        "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj",
+        "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj",
         "packagesPath": "C:\\Users\\rique\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\obj\\",
+        "outputPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rique\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -196,18 +204,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj": {
+    "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj",
+        "projectUniqueName": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj",
         "projectName": "CatalogoVeiculos.Infra.CrossCutting",
-        "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj",
+        "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\CatalogoVeiculos.Infra.CrossCutting.csproj",
         "packagesPath": "C:\\Users\\rique\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\obj\\",
+        "outputPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.CrossCutting\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rique\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -224,11 +232,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj": {
-                "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj"
+              "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj": {
+                "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj"
               },
-              "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj": {
-                "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj"
+              "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj": {
+                "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj"
               }
             }
           }
@@ -264,18 +272,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj": {
+    "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj",
+        "projectUniqueName": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj",
         "projectName": "CatalogoVeiculos.Infra.Data",
-        "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj",
+        "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj",
         "packagesPath": "C:\\Users\\rique\\.nuget\\packages\\",
-        "outputPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\obj\\",
+        "outputPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rique\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -292,8 +300,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj": {
-                "projectPath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj"
+              "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj": {
+                "projectPath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Domain\\CatalogoVeiculos.Domain.csproj"
               }
             }
           }
@@ -337,7 +345,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

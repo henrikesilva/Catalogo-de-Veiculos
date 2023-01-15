@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7OX/fRyWY5Ecgb0iq42xz9ktdcoOJ7lQUEVjTIIPkPL7BF6d69VjOBfSIMs+6UP48JDRl2cHCBYUV4qklEJLRQ==",
+  "dgSpecHash": "9ShNlNAZUjaMH7L3WD/dHV1TJVKnI8L2JapXEPPxDopaEtRpJpQ0iaM9lApMVJ3XiJ0QhglQ6YR2jZnind8Rfw==",
   "success": true,
-  "projectFilePath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj",
+  "projectFilePath": "C:\\Users\\rique\\Documents\\Temp\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Infra.Data\\CatalogoVeiculos.Infra.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rique\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
