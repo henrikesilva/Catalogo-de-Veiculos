@@ -12,7 +12,7 @@ export class GuardService {
     private router: Router
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
+  /*canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     var localUser = localStorage.getItem('currentUser');
     var permission = this.authService.currentUserValue;
 
@@ -30,5 +30,5 @@ export class GuardService {
       });
       return false;
     }
-  }
+  }*/
 }

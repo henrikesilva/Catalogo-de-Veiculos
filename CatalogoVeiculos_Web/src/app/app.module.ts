@@ -32,8 +32,8 @@ import { InterceptorService } from './services/interceptors/interceptor.service'
   ],
   providers: [
     /*AuthService,
-    GuardService,
-    {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}*/
+    GuardService,*/
+    InterceptorService
   ],
   bootstrap: [AppComponent]
 })

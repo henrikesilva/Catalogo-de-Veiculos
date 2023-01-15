@@ -1,0 +1,16 @@
+p{
+    text-align: center;
+    font-size: large;
+}
+
+img{
+    width: 90%;
+}
+
+.titulo{
+    font-weight: 500;
+}
+
+.subtitulo{
+    font-weight: 300;
+}

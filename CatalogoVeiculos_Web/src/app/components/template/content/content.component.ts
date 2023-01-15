@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/app/Models/ArquivoConfig';
 import { Veiculos } from 'src/app/Models/Veiculos';
 import { VeiculoService } from 'src/app/services/veiculos/veiculo.service';
@@ -13,7 +14,8 @@ export class ContentComponent implements OnInit{
   veiculos: any;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {
     
   }
@@ -26,4 +28,7 @@ export class ContentComponent implements OnInit{
     });
   }
 
+  detalhesVeiculo(veiculoId: number){
+    this.router.navigate(['detalhes', veiculoId]);
+  }
 }
