@@ -17,6 +17,7 @@ namespace CatalogoVeiculos.API.Controllers
             _veiculosAppService = veiculosAppService;
         }
 
+        [AllowAnonymous]
         [HttpGet("buscar")]
         public async Task<IActionResult> SelecionarVeiculos()
         {

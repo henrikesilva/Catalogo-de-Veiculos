@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using CatalogoVeiculos.Application.Config;
-using CatalogoVeiculos.Application.Dto;
 using CatalogoVeiculos.Infra.CrossCutting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -18,7 +17,7 @@ namespace CatalogoVeiculos.API
         }
         
         public IConfiguration Configuration { get;}
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+        //readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -74,11 +73,11 @@ namespace CatalogoVeiculos.API
 
             services.AddCors(opt =>
             {
-                opt.AddPolicy(MyAllowSpecificOrigins, builder =>
+                opt.AddPolicy("AllowOrigin", builder =>
                 {
-                    builder.WithOrigins("http://localhost:4200")
-                           .AllowAnyOrigin()
-                           .AllowAnyMethod();
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
                 });
             });
 
@@ -110,6 +109,8 @@ namespace CatalogoVeiculos.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("AllowOrigin");
 
             app.UseHttpsRedirection();
             app.UseAuthentication();

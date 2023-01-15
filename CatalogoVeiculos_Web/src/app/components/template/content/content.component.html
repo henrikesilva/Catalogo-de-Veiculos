@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<section class="component">
+    <div class="album py-5 bg-light">
+        <div class="container">
+    
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col" *ngFor="let veiculo of veiculos">
+              <div class="card shadow-sm">
+                <img [src]="veiculo.foto" alt="imagem veiculo">
+                <div class="card-body">
+                  <p class="card-text"> {{veiculo.modelo.marca.nomeMarca}} {{veiculo.modelo.nomeModelo}} {{veiculo.nome}}</p>
+                  <p class="card-text">R$ {{veiculo.preco}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+<app-footer></app-footer>

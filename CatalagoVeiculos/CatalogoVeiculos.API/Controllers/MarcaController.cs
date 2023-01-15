@@ -60,9 +60,9 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var marcaCadastrada = await _marcaAppService.CadastrarMarca(marca);
                 if (marcaCadastrada)
-                    return BadRequest("Ocorreu um erro ao tentar cadastrar a marca");
+                    return Ok("A marca do veiculo foi cadastrada corretamente.");
 
-                return Ok("A marca do veiculo foi cadastrada corretamente.");
+                return BadRequest("Ocorreu um erro ao tentar cadastrar a marca");
 
             }
             catch (ArgumentException ex)
