@@ -1,0 +1,17 @@
+p{
+    text-align: center;
+    font-size: large;
+}
+
+img{
+    width: 90%;
+    height: 200px;
+}
+
+.titulo{
+    font-weight: 500;
+}
+
+.subtitulo{
+    font-weight: 300;
+}

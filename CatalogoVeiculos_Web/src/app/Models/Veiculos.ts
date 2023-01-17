@@ -1,15 +1,33 @@
 import { Marca } from "./Marca";
 import { Modelo } from "./Modelo";
+import { Usuario } from "./Usuario";
 
 export class Veiculos{
-    VeiculoId: number = 0;
-    Nome: string = '';
-    Foto: string = '';
-    Preco: number = 0.000;
-    DataCriacao?: Date;
-    DataAtualizacao?: Date;
-    ModeloId: number = 0;
-    MarcaId: number = 0;
+    veiculoId: number = 0;
+    nome: string = '';
+    foto: string = '';
+    preco: number = 0.000;
+    dataCriacao?: Date;
+    dataAtualizacao?: Date;
+    modeloId: number = 0;
+    marcaId: number = 0;
+    usuarioId: number = 0;
 
-    Modelo?: Modelo;
+    usuario: Usuario = {
+        usuarioId: 0,
+        nome: '',
+        administrador: false,
+        usuario: '',
+        senha: ''
+    };
+
+    modelo: Modelo = {
+        modeloId: 0,
+        nomeModelo: '',
+        marcaId: 0,
+        marca: {
+            marcaId: 0,
+            nomeMarca: ''
+        }
+    };
 }

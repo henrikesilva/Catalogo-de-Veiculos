@@ -21,9 +21,14 @@ namespace CatalogoVeiculos.Application.Service
             _mapper = mapper;
         }
 
-        public async Task<UsuarioDto> BuscarUsuario(string login, string senha)
+        public async Task<UsuarioDto> BuscarUsuarioPorLoginSenha(string login, string senha)
         {
-            return _mapper.Map<UsuarioDto>(await _usuarioService.BuscarUsuario(login, senha));
+            return _mapper.Map<UsuarioDto>(await _usuarioService.BuscarUsuarioPorloginSenha(login, senha));
+        }
+
+        public async Task<UsuarioDto> BuscarUsuarioPorLogin(string login)
+        {
+            return _mapper.Map<UsuarioDto>(await _usuarioService.BuscarUsuarioPorLogin(login));
         }
 
         public async Task<bool> CadastrarUsuario(UsuarioDto usuario)
@@ -42,7 +47,8 @@ namespace CatalogoVeiculos.Application.Service
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                        new Claim(ClaimTypes.Name, login.Usuario)
+                        new Claim(ClaimTypes.Name, login.Usuario),
+                        new Claim(ClaimTypes.Role, login.Administrador.ToString())
                     }),
 
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

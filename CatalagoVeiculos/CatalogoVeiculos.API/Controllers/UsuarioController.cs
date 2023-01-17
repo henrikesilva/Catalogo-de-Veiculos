@@ -24,7 +24,7 @@ namespace CatalogoVeiculos.API.Controllers
         {
             try
             {
-                var acesso = await _usuarioAppService.BuscarUsuario(login.Usuario, login.Senha);
+                var acesso = await _usuarioAppService.BuscarUsuarioPorLoginSenha(login.Usuario, login.Senha);
                 if (acesso == null)
                     return Unauthorized("Não foi possivel efetuar o login");
 
@@ -34,6 +34,7 @@ namespace CatalogoVeiculos.API.Controllers
                     var returnRequest = new
                     {
                         Login = login.Usuario,
+                        Admin = acesso.Administrador,
                         token
                     };
 
@@ -74,7 +75,7 @@ namespace CatalogoVeiculos.API.Controllers
 
             try
             {
-                var usuario = await _usuarioAppService.BuscarUsuario(nome, null);
+                var usuario = await _usuarioAppService.BuscarUsuarioPorLogin(nome);
                 if (usuario.Equals(new UsuarioDto()))
                     return NotFound("Não foi encontrado usuario para essa busca");
 

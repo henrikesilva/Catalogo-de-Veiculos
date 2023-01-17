@@ -6,7 +6,8 @@ namespace CatalogoVeiculos.Application.Interface
     public interface IUsuarioAppService
     {
         string Login(LoginDto usuario);
-        Task<UsuarioDto> BuscarUsuario(string login, string senha);
+        Task<UsuarioDto> BuscarUsuarioPorLoginSenha(string login, string senha);
+        Task<UsuarioDto> BuscarUsuarioPorLogin(string login);
         Task<bool> CadastrarUsuario(UsuarioDto usuario);
     }
 }

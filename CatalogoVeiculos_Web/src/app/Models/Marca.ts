@@ -1,4 +1,4 @@
 export class Marca{
-    MarcaId: number = 0;
-    NomeMarca: string = '';
+    marcaId: number = 0;
+    nomeMarca: string = '';
 }

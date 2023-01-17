@@ -5,7 +5,8 @@ namespace CatalogoVeiculos.Domain.Interfaces.Repository
     public interface IUsuarioRepository
     {
         Task<bool> CadastrarUsuario(Usuario usuario);
-        Task<Usuario> BuscarUsuario(string email, string senha);
+        Task<Usuario> BuscarUsuarioPorLoginSenha(string login, string senha);
+        Task<Usuario> BuscarUsuarioPorLogin(string login);
         Task<bool> AtualizarUsuario(Usuario usuario);
     }
 }

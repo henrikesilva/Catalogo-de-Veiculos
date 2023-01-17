@@ -15,5 +15,7 @@ namespace CatalogoVeiculos.Application.Dto
 
         [Required(ErrorMessage = "O campo Senha é obrigatório")]
         public string Senha { get; set; }
+
+        public bool Administrador { get; set; }
     }
 }

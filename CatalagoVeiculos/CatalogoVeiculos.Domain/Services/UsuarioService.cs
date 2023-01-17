@@ -19,9 +19,15 @@ namespace CatalogoVeiculos.Domain.Services
             return usuarioAtualizado;
         }
 
-        public async Task<Usuario> BuscarUsuario(string email, string senha)
+        public async Task<Usuario> BuscarUsuarioPorLogin(string login)
         {
-            var usuario = await _usuarioRepository.BuscarUsuario(email, senha);
+            var usuario = await _usuarioRepository.BuscarUsuarioPorLogin(login);
+            return usuario;
+        }
+
+        public async Task<Usuario> BuscarUsuarioPorloginSenha(string login, string senha)
+        {
+            var usuario = await _usuarioRepository.BuscarUsuarioPorLoginSenha(login, senha);
             return usuario;
         }
 

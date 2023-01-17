@@ -23,7 +23,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                                 VALUES
 	                                                (@Nome, @LoginUsuario, @Senha, @Administrador)";
 
-        private string buscarUsuario = @"SELECT 
+        private string loginUsuario = @"SELECT 
 	                                        UsuarioId,
 	                                        LoginUsuario,
 	                                        Administrador
@@ -31,6 +31,16 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                        Usuario
                                         WHERE
 	                                        LoginUsuario = @LoginUsuario AND Senha = @Senha";
+        
+        private string buscarUsuario = @"SELECT 
+	                                        UsuarioId,
+	                                        LoginUsuario,
+                                            Nome,
+	                                        Administrador
+                                        FROM
+	                                        Usuario
+                                        WHERE
+	                                        LoginUsuario = @LoginUsuario";
         #endregion
 
         private string connection;
@@ -65,7 +75,32 @@ namespace CatalogoVeiculos.Infra.Data.Repository
             }
         }
 
-        public async Task<Usuario> BuscarUsuario(string login, string senha)
+        public async Task<Usuario> BuscarUsuarioPorLoginSenha(string login, string senha)
+        {
+            try
+            {
+                using (var con = new SqlConnection(connection))
+                {
+                    var usuario = await con.QueryFirstAsync<Usuario>(loginUsuario,
+                                                                new
+                                                                {
+                                                                    LoginUsuario = login,
+                                                                    Senha = senha
+                                                                });
+
+                    if (usuario.LoginUsuario != null)
+                        return usuario;
+
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+        
+        public async Task<Usuario> BuscarUsuarioPorLogin(string login)
         {
             try
             {
@@ -74,14 +109,13 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                     var usuario = await con.QueryFirstAsync<Usuario>(buscarUsuario,
                                                                 new
                                                                 {
-                                                                    LoginUsuario = login,
-                                                                    Senha = senha
+                                                                    LoginUsuario = login
                                                                 });
 
-                    if (usuario.Nome != null)
-                        return new Usuario();
+                    if (usuario.LoginUsuario != null)
+                        return usuario;
 
-                    return usuario;
+                    return new Usuario();
                 }
             }
             catch (SqlException ex)

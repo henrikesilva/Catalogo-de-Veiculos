@@ -1,0 +1,34 @@
+<section style="margin-top: 1%;">
+    <div class="container" style="text-align: center;">
+        <h2>
+            Catalógo de Veiculos
+        </h2>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col" *ngFor="let veiculo of veiculos">
+                    <div class="card shadow-sm">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img [src]="veiculo.foto" alt="imagem veiculo">
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text titulo"> {{veiculo.modelo.marca.nomeMarca}}
+                                {{veiculo.modelo.nomeModelo}} {{veiculo.nome}}</p>
+                            <p class="card-text subtitulo">R$ {{veiculo.preco}}</p>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        (click)="detalhesVeiculo(veiculo.veiculoId)">Detalhes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

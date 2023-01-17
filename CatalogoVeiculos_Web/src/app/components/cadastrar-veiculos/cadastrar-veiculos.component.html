@@ -1,0 +1,54 @@
+<section class="container">
+  <h2 style="text-align: center; margin-top: 5%;">{{tituloTela}} Veiculo</h2>
+  <form class="g-3 align-items-center" style="margin-top: 5%; align-items: center;">
+    <div class="col-md-12">
+      <label for="inputNome" class="form-label">Nome</label>
+      <input type="text" name="nome" class="form-control" placeholder="ex. Onix" id="nome" [(ngModel)]="form.nome">
+    </div>
+    <div class="col-md-12">
+      <label for="inputFoto" class="form-label">Foto</label>
+      <input type="text" name="foto" class="form-control" placeholder="Insira o link da foto do veiculo" id="foto" [(ngModel)]="form.foto">
+
+      <div class="d-flex justify-content-center align-items-center foto" *ngIf="form.foto">
+        <img [src]="form.foto" alt="imagem veiculo">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <label for="preco" class="form-label">Preço</label>
+      <input type="number" name="preco" placeholder="R$ 60.000" class="form-control" id="preco" [(ngModel)]="form.preco">
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="marca">Marca</label>
+        <select name="marca" id="marca" #marca class="form-select" (change)="buscarMarca($any($event.target).value)" 
+          required>
+          <option>Selecione a marca/montadora do veiculo...</option>
+          <option *ngFor="let marca of listaMarcas">
+            {{marca.nomeMarca}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="modelo">Modelo</label>
+        <select name="modelo" id="modelo" class="form-select" (change)="buscarModelo($any($event.target).value)" 
+          required>
+          <option>Selecione o modelo do veiculo ...</option>
+          <option *ngFor="let modelo of listaModelos">
+            {{modelo.nomeModelo}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="botoes">
+      <button class="btn btn-success" [disabled]="!habilitado" (click)="onSubmit()">
+          {{tituloTela}}
+      </button>
+      <button class="btn btn-danger" [routerLink]="['/']">
+          Cancelar
+      </button>
+  </div>
+  </form>
+</section>

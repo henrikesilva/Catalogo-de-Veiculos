@@ -70,7 +70,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                            INNER JOIN Modelo AS MO ON MO.ModeloId = VE.ModeloId
 	                                            INNER JOIN Marca AS MA ON MA.MarcaId = MO.MarcaId
 	                                            INNER JOIN Usuario AS US ON US.UsuarioId = VE.UsuarioId
-	                                            ORDER BY VE.Preco ASC";
+	                                            ORDER BY VE.Preco DESC";
         #endregion
 
         private string connection;

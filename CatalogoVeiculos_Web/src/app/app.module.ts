@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +13,9 @@ import { ContentComponent } from './components/template/content/content.componen
 
 import { AuthService } from './services/auth/auth.service';
 import { GuardService } from './services/guard/guard.service';
-import { InterceptorService } from './services/interceptors/interceptor.service';
+import { httpInterceptorProviders, InterceptorService } from './services/interceptors/interceptor.service';
+import { CadastrarVeiculosComponent } from './components/cadastrar-veiculos/cadastrar-veiculos.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -21,19 +23,22 @@ import { InterceptorService } from './services/interceptors/interceptor.service'
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    ContentComponent
+    ContentComponent,
+    CadastrarVeiculosComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
 
     HttpClientModule
   ],
   providers: [
-    /*AuthService,
-    GuardService,*/
-    InterceptorService
+    AuthService,
+    GuardService,
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
