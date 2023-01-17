@@ -8,12 +8,12 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
         </li>
-        <a class="nav-link" aria-current="page" href="#">Inicio</a>
-        <a class="nav-link" aria-current="page" href="cadastrar" *ngIf="user.admin">Cadastrar Veiculo</a>
+        <a class="nav-link" aria-current="page" [routerLink]="['/']">Inicio</a>
+        <a class="nav-link" aria-current="page" [routerLink]="['cadastrar-veiculo']" *ngIf="admin">Cadastrar Veiculo</a>
       </ul>
       <div class="d-flex" role="search">
-        <button class="btn btn-outline-success" type="submit" (click)="login()">Login</button>
-        <button class="btn btn-outline-secondary" type="submit" (click)="logout()">Sair</button>
+        <button class="btn btn-outline-success" type="submit" *ngIf="!admin" (click)="login()">Login</button>
+        <button class="btn btn-outline-secondary" type="submit" *ngIf="admin" (click)="logout()">Sair</button>
       </div>
     </div>
   </div>

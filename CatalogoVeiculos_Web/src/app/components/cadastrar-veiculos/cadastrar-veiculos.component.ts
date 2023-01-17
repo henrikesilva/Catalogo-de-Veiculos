@@ -4,6 +4,7 @@ import { Marca } from 'src/app/Models/Marca';
 import { Modelo } from 'src/app/Models/Modelo';
 import { Usuario } from 'src/app/Models/Usuario';
 import { Veiculos } from 'src/app/Models/Veiculos';
+import { AlertService } from 'src/app/services/alerts/alert.service';
 import { MarcaService } from 'src/app/services/marca/marca.service';
 import { ModeloService } from 'src/app/services/modelo/modelo.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
@@ -19,6 +20,8 @@ export class CadastrarVeiculosComponent implements OnInit{
   
   habilitado: boolean = false;
   tituloTela: string = '';
+  modeloHabilitado: boolean = false;
+  cadastrar: boolean = false;
 
   form: Veiculos = {
     nome: '',
@@ -63,18 +66,21 @@ export class CadastrarVeiculosComponent implements OnInit{
     private modeloService: ModeloService,
     private usuarioService: UsuarioService,
     private storageService: StorageService,
+    private alertsService: AlertService,
+    private router: Router,
     private route: ActivatedRoute
   ) {
 
   }
 
   ngOnInit(): void {
-    let id: number = parseInt(this.route.snapshot.paramMap.get('id') || '');
+    let id: number = parseInt(this.route.snapshot.paramMap.get('veiculoId') || '');
     const usuarioLogin = this.storageService.getUser();
     
     this.usuarioService.buscarUsuarioPorNome(usuarioLogin.login).subscribe(usaurioRetorno => this.usuario = usaurioRetorno);
 
     if(isNaN(id)){
+      this.cadastrar = true;
       this.form;
       this.form.usuarioId = this.usuario.usuarioId;
       this.tituloTela = 'Cadastro';
@@ -87,15 +93,18 @@ export class CadastrarVeiculosComponent implements OnInit{
           nome: veiculo.nome,
           foto: veiculo.foto,
           preco: veiculo.preco,
-          modeloId: veiculo.modeloId,
+          modeloId: veiculo.modelo.modeloId,
           dataCriacao: veiculo.dataCriacao,
           dataAtualizacao: veiculo.dataAtualizacao,
-          marcaId: veiculo.marcaId,
+          marcaId: veiculo.modelo.marca.marcaId,
           modelo: veiculo.modelo,
           usuarioId: this.usuario.usuarioId,
 
           usuario: this.usuario
         }
+      }, 
+      error => {
+        this.alertsService.oneErrorMessage('Ocorreu um erro ao buscar o veiculo');
       })
       
       this.tituloTela = 'Atualizar'
@@ -103,7 +112,6 @@ export class CadastrarVeiculosComponent implements OnInit{
     }
 
     this.marcaService.listarMarcas().subscribe(marca => this.listaMarcas = marca);
-    this.modeloService.listarModelo().subscribe(modelo => this.listaModelos = modelo);
   }
 
   buscarMarca(nome: any){
@@ -113,10 +121,14 @@ export class CadastrarVeiculosComponent implements OnInit{
 
     if(marcas)
       for(const marca of marcas){
+        this.modeloService.listarModeloPorMarca(marca.marcaId).subscribe(modelo => this.listaModelos = modelo);
+        this.modeloHabilitado = true;
+
         this.form.marcaId = marca.marcaId;
         this.form.modelo.marca.marcaId = marca.marcaId;
         this.form.modelo.marca.nomeMarca = marca.nomeMarca;
       }
+
   }
 
   buscarModelo(nome: any){
@@ -138,11 +150,23 @@ export class CadastrarVeiculosComponent implements OnInit{
     this.form.usuario.senha = '';
     this.form.usuario = this.usuario;
 
-    this.veiculoService.adicionarVeiculo(this.form).subscribe(success => {
-      console.log('sucesso');
-    },
-    err => {
-      console.log(err);
-    })
+    if(this.form.veiculoId != 0){
+      this.veiculoService.atualizarVeiculo(this.form).subscribe(success => {
+        this.alertsService.oneSuccessMessage('Veiculo cadastrado com sucesso');
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.alertsService.oneErrorMessage('Ocorreu um erro ao cadastrar o veiculo;');
+      })
+    }
+    else{
+      this.veiculoService.adicionarVeiculo(this.form).subscribe(success => {
+        this.alertsService.oneSuccessMessage('Veiculo atualizado com sucesso');
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.alertsService.oneErrorMessage('Ocorreu um erro ao cadastrar o veiculo;');
+      })
+    }
   }
 }

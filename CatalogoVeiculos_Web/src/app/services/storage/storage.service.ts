@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/Models/Usuario';
 
 const USER_KEY = 'auth-user';
@@ -8,19 +9,20 @@ const USER_KEY = 'auth-user';
 })
 export class StorageService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   clean(): void{
-    window.localStorage.clear();
+    localStorage.clear();
+    this.router.navigate(['/'])
   }
 
   public saveUser(usuario: Usuario): void{
-    window.localStorage.removeItem(USER_KEY);
-    window.localStorage.setItem(USER_KEY, JSON.stringify(usuario));
+    localStorage.removeItem(USER_KEY);
+    localStorage.setItem(USER_KEY, JSON.stringify(usuario));
   }
 
   public getUser(): any{
-    const user = window.localStorage.getItem(USER_KEY);
+    const user = localStorage.getItem(USER_KEY);
     if(user){
       return JSON.parse(user);
     }
@@ -29,7 +31,7 @@ export class StorageService {
   }
 
   public isLoggedIn(): boolean {
-    const user = window.localStorage.getItem(USER_KEY);
+    const user = localStorage.getItem(USER_KEY);
     if (user) {
       return true;
     }

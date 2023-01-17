@@ -17,7 +17,8 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                                Foto = @Foto,
 	                                                Preco = @Preco,
 	                                                DataAtualizacao = @DataAtualizacao,
-	                                                ModeloId = @ModeloId
+	                                                ModeloId = @ModeloId,
+                                                    UsuarioId = @UsuarioId
                                                 WHERE
 	                                                VeiculoId = @VeiculoId";
 
@@ -88,7 +89,9 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                     var veiculoAtualizado = await con.ExecuteAsync(atualizarVeiculo, 
                                                                 new
                                                                 {
+                                                                    VeiculoId = veiculo.VeiculoId,
                                                                     UsuarioId = veiculo.UsuarioId,
+                                                                    Nome = veiculo.Nome,
                                                                     Foto = veiculo.Foto,
                                                                     Preco = veiculo.Preco,
                                                                     DataAtualizacao = veiculo.DataAtualizacao,

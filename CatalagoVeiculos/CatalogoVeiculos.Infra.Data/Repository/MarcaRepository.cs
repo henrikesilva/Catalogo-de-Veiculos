@@ -35,6 +35,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                        Marca(nolock)
                                         WHERE
 	                                        MarcaId = @MarcaId ";
+        
 
         private string buscarMarcas = @"SELECT 
 	                                        * 

@@ -1,5 +1,6 @@
 ﻿using CatalogoVeiculos.Application.Dto;
 using CatalogoVeiculos.Application.Interface;
+using CatalogoVeiculos.Application.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -27,6 +28,24 @@ namespace CatalogoVeiculos.API.Controllers
                     return NotFound("Não foram encontrados dados nessa busca");
 
                 return Ok(modelo);
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet("buscarMarcas/{marcaId}")]
+        public async Task<IActionResult> BuscarModeloPorNome(int marcaId)
+        {
+            try
+            {
+                var modelo = await _modeloAppService.BuscarModeloPorMarca(marcaId);
+                if (modelo == null)
+                    return NotFound("Não foram encontrados registros");
+
+                return Ok(modelo);
+
             }
             catch (ArgumentException ex)
             {

@@ -22,4 +22,8 @@ export class VeiculoService {
   adicionarVeiculo(Veiculo: Veiculos) : Observable<Veiculos>{
     return this.http.post<Veiculos>(`${environment.apiBaseUrl}/veiculo/cadastrar`, Veiculo);
   }
+
+  atualizarVeiculo(Veiculo: Veiculos) : Observable<Veiculos>{
+    return this.http.put<Veiculos>(`${environment.apiBaseUrl}/veiculo/atualizar`, Veiculo);
+  }
 }

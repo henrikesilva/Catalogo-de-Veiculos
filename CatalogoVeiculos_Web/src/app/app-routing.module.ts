@@ -20,7 +20,15 @@ const routes: Routes = [
         component: InicioComponent
       },
       {
-        path: 'cadastrar',
+        path: 'cadastrar-veiculo',
+        component: CadastrarVeiculosComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      },
+      {
+        path: 'atualizar-veiculo/:veiculoId',
         component: CadastrarVeiculosComponent,
         canActivate: [GuardService],
         data: {

@@ -29,6 +29,12 @@ namespace CatalogoVeiculos.Application.Service
             return modelo;
         }
 
+        public async Task<List<ModeloDto>> BuscarModeloPorMarca(int marcaId)
+        {
+            var modelo = _mapper.Map<List<ModeloDto>>(await _modeloService.BuscarModeloPorMarca(marcaId));
+            return modelo;
+        }
+
         public async Task<List<ModeloDto>> BuscarModelos()
         {
             var modelos = _mapper.Map<List<ModeloDto>>(await _modeloService.BuscarModelos());

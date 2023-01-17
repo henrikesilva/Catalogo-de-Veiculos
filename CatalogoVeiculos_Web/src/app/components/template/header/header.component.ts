@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alerts/alert.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
@@ -8,17 +9,26 @@ import { StorageService } from 'src/app/services/storage/storage.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
-   public user: any;
+   user: any;
+   admin: boolean = false;
    isLoggedIn = false;
   
   constructor(
     private router: Router,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private alertsService: AlertService
   ) {
   }
 
   ngOnInit(): void {
     this.user = this.storageService.getUser();
+
+    if(this.user === undefined){
+      this.admin = false;
+    }
+    else{
+      this.admin = true;
+    }
   }
 
   login(){
@@ -27,8 +37,8 @@ export class HeaderComponent implements OnInit{
 
   logout(): any{
     this.storageService.clean();
-    if(this.user){
-      return this.router.navigate(['']);
-    }
+    this.admin = false;
+    this.alertsService.oneSuccessMessage('Logout efetuado com sucesso.');
+    return this.router.navigate(['/']);
   }
 }

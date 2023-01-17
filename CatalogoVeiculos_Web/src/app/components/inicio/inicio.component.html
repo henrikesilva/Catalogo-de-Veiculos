@@ -21,8 +21,8 @@
                             <p class="card-text subtitulo">R$ {{veiculo.preco}}</p>
                             <div class="d-flex justify-content-center align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        (click)="detalhesVeiculo(veiculo.veiculoId)">Detalhes</button>
+                                    <a type="button" class="btn btn-sm btn-outline-secondary"
+                                    [routerLink]="['/atualizar-veiculo/', veiculo.veiculoId]">Detalhes</a>
                                 </div>
                             </div>
                         </div>

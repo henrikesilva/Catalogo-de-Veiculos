@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="container col-md-4 text-center" >
     <body class="">
         <main class="form-signin w-100 m-auto">
@@ -13,17 +15,10 @@
                     <input type="password" class="form-control" id="floatingPassword" name="senha" placeholder="insira a sua senha" [(ngModel)]="form.senha">
                     <label for="floatingPassword">Senha</label>
                 </div>
-    
-                <!--<div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>-->
                 <button class="w-100 btn btn-outline-primary" style="margin-bottom: 1%;" type="submit" (click)="onSubmit()">Entrar</button>
-                <button class="w-100 btn btn-outline-danger" type="submit">Cadastrar</button>
-                
-                <p class="mt-5 mb-3 text-muted">© 2023–2023</p>
             </form>
         </main>
     </body>
 </div>
+
+<app-footer></app-footer>

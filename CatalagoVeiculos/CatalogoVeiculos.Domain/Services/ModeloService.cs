@@ -26,6 +26,12 @@ namespace CatalogoVeiculos.Domain.Services
             return modelo;
         }
 
+        public async Task<List<Modelo>> BuscarModeloPorMarca(int marcaId)
+        {
+            var modelo = await _modeloRepository.BuscarModeloPorMarca(marcaId);
+            return modelo;
+        }
+
         public async Task<List<Modelo>> BuscarModelos()
         {
             var modelos = await _modeloRepository.BuscarModelos();

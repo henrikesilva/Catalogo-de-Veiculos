@@ -22,7 +22,8 @@
         <label for="marca">Marca</label>
         <select name="marca" id="marca" #marca class="form-select" (change)="buscarMarca($any($event.target).value)" 
           required>
-          <option>Selecione a marca/montadora do veiculo...</option>
+          <option *ngIf="cadastrar">Selecione a marca/montadora do veiculo...</option>
+          <option *ngIf="!cadastrar">{{form.modelo.marca.nomeMarca}}</option>
           <option *ngFor="let marca of listaMarcas">
             {{marca.nomeMarca}}
           </option>
@@ -30,11 +31,12 @@
       </div>
     </div>
     <div class="col-md-12">
-      <div class="form-group">
+      <div class="form-group" >
         <label for="modelo">Modelo</label>
         <select name="modelo" id="modelo" class="form-select" (change)="buscarModelo($any($event.target).value)" 
-          required>
-          <option>Selecione o modelo do veiculo ...</option>
+          required [disabled]="!modeloHabilitado">
+          <option *ngIf="cadastrar">Selecione o modelo do veiculo...</option >
+          <option *ngIf="!cadastrar">{{form.modelo.nomeModelo}}</option>
           <option *ngFor="let modelo of listaModelos">
             {{modelo.nomeModelo}}
           </option>

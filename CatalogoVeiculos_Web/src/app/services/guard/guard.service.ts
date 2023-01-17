@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { AlertService } from '../alerts/alert.service';
 import { StorageService } from '../storage/storage.service';
 
 @Injectable({
@@ -9,8 +9,8 @@ import { StorageService } from '../storage/storage.service';
 export class GuardService {
 
   constructor(
-    private authService: AuthService,
     private storageService: StorageService,
+    private alertsService: AlertService,
     private router: Router
   ) { }
 
@@ -20,6 +20,12 @@ export class GuardService {
 
     if(user && localStorage.admin === true){
         return true;
+    }
+    else if(!user && localStorage.admin === true){
+      this.alertsService.oneErrorMessage('O seu login expirou, por favor entre novamente no sistema');
+      this.storageService.clean();
+
+      return false;
     }
     else{
       this.router.navigate(['/'], {

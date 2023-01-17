@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/Models/Login';
+import { AlertService } from 'src/app/services/alerts/alert.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authservice: AuthService,
     private storageService: StorageService,
+    private alertsService: AlertService,
     private router: Router
   ) { }
 
@@ -46,9 +48,10 @@ export class LoginComponent implements OnInit {
         this.roles = this.storageService.getUser().roles;
 
         this.router.navigate(['/']);
+        this.alertsService.oneSuccessMessage('Login efetuado com sucesso.');
       },
       error: err => {
-        this.errorMessage = err.error.message;
+        this.alertsService.oneErrorMessage('Ocorreu um erro ao tentar efetuar o Login');
         this.isLoginFailed = true;
       }
     })

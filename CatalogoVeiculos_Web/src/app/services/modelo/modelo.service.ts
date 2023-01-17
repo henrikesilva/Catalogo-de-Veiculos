@@ -16,4 +16,8 @@ export class ModeloService {
   listarModelo() : Observable<Modelo[]>{
     return this.http.get<Modelo[]>(`${environment.apiBaseUrl}/Modelo/BuscarTodos`);
   }
+  
+  listarModeloPorMarca(marcaId: number) : Observable<Modelo[]>{
+    return this.http.get<Modelo[]>(`${environment.apiBaseUrl}/Modelo/buscarMarcas/${marcaId}`);
+  }
 }

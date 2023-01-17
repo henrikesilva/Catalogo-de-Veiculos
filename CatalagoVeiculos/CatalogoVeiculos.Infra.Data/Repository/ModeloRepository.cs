@@ -37,6 +37,17 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                         WHERE
 	                                        MO.ModeloId = @ModeloId";
 
+        private string buscarModeloPorMarca = @"SELECT 
+	                                        MO.ModeloId,
+	                                        MO.NomeModelo,
+	                                        MO.MarcaId,
+	                                        MA.NomeMarca
+                                        FROM
+	                                        Modelo AS MO (nolock)
+	                                        INNER JOIN Marca (nolock) AS MA ON MA.MarcaId = MO.MarcaId
+                                        WHERE
+	                                        MO.MarcaId = @MarcaId";
+
         private string buscarModelos = @"SELECT 
 	                                        MO.ModeloId,
 	                                        MO.NomeModelo,
@@ -102,6 +113,37 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                         return modeloAtualizado.FirstOrDefault();
 
                     return new Modelo();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+        
+        public async Task<List<Modelo>> BuscarModeloPorMarca(int marcaId)
+        {
+            try
+            {
+                using (var con = new SqlConnection(_connection))
+                {
+                    var modeloAtualizado = await con.QueryAsync<Modelo, Marca, Modelo>(buscarModeloPorMarca,
+                                                               (Modelo, Marca) =>
+                                                               {
+                                                                   Modelo.Marca = Marca;
+
+                                                                   return Modelo;
+                                                               },
+                                                               new
+                                                               {
+                                                                   MarcaId = marcaId
+                                                               },
+                                                               splitOn: "MarcaId");
+
+                    if (modeloAtualizado.Any())
+                        return modeloAtualizado.ToList();
+
+                    return new List<Modelo>();
                 }
             }
             catch (SqlException ex)
