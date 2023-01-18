@@ -67,7 +67,7 @@ export class UsuarioComponent implements OnInit{
           this.router.navigate(['/usuarios']); 
         },
         error: (e) => {
-          this.alertsService.oneErrorMessage('Não foi possivel atualizar o usuario');
+          //this.alertsService.oneErrorMessage('Não foi possivel atualizar o usuario');
           console.log(e)
         }
       });
@@ -84,7 +84,7 @@ export class UsuarioComponent implements OnInit{
             this.router.navigate(['/usuarios']); 
           },
           error: (e) => {
-            this.alertsService.oneErrorMessage('Não foi possivel cadastrar o usuario');
+            //this.alertsService.oneErrorMessage('Não foi possivel cadastrar o usuario');
           }
         });
       }

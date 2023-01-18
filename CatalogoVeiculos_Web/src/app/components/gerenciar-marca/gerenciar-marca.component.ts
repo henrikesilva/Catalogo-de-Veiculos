@@ -38,7 +38,7 @@ export class GerenciarMarcaComponent{
       this.dataSource.sort = this.sort || this.dataSource.sort;
     },
     erro => {
-      alertService.oneErrorMessage('Ocorreu um erro inesperado');
+      //alertService.oneErrorMessage('Ocorreu um erro inesperado');
     })
   }
 
@@ -59,7 +59,7 @@ export class GerenciarMarcaComponent{
         this.alertService.oneSuccessMessage('Marca inativada com sucesso');
       },
       error: (e) => {
-        this.alertService.oneErrorMessage('Não foi possivel inativar a marca');
+        //this.alertService.oneErrorMessage('Não foi possivel inativar a marca');
       }
     });
   }

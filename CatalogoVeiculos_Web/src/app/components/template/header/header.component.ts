@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnInit,  } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alerts/alert.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
@@ -8,7 +8,7 @@ import { StorageService } from 'src/app/services/storage/storage.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit, AfterViewChecked{
    user: any;
    admin: boolean = false;
    isLoggedIn = false;
@@ -22,12 +22,21 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
     this.user = this.storageService.getUser();
-
+    this.isLoggedIn = this.storageService.isLoggedIn();
+    
     if(this.user === undefined){
       this.admin = false;
     }
     else{
       this.admin = true;
+    }
+  }
+
+  ngAfterViewChecked(): void {
+    this.isLoggedIn = this.storageService.isLoggedIn();
+    
+    if(!this.isLoggedIn){
+      this.admin = false;
     }
   }
 

@@ -32,7 +32,7 @@ export class InicioComponent implements OnInit {
       this.veiculos = veiculo
     }, 
     err => {
-      this.alertsService.oneErrorMessage('Ocorreu um erro ao buscar os veiculos cadastrados');
+      //this.alertsService.oneErrorMessage('Ocorreu um erro ao buscar os veiculos cadastrados');
     });
 
     this.user = this.storageService.getUser();

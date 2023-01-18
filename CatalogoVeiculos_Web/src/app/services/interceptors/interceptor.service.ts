@@ -36,19 +36,21 @@ export class InterceptorService implements HttpInterceptor {
             switch (error.status) {
               case 401:
                 this.storageService.clean();
-                this.alertService.oneErrorMessage('O seu token expirou por favor faça o login novamente');
-                this.router.navigate(['/']);
+                this.alertService.oneErrorMessage('Não foi possivel efetuar o login, tente novamente ou contate o administrador');
               break;
 
               case 500:
-                this.alertService.oneErrorMessage('ocorreu um erro inesperado, por gentileza contate o administrador');
+                this.alertService.oneErrorMessage('Ocorreu um erro inesperado, por gentileza contate o administrador');
                 this.router.navigate(['/']);
+              break;
+
+              default:
+                this.alertService.oneErrorMessage('Não foi possivel estabelecer comunicação com o servidor interno, contate o administrador');
               break;
             }
           }
 
-          this.alertService.oneErrorMessage('Não foi possivel estabelecer comunicação com o servidor interno, contate o administrador');
-          window.location.reload();
+
           throw error;
         })
       )

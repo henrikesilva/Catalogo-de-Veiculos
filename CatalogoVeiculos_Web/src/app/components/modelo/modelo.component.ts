@@ -114,7 +114,7 @@ export class ModeloComponent implements OnInit {
             this.router.navigate(['/modelos']); 
           },
           error: (e) => {
-            this.alertsService.oneErrorMessage('Não foi possivel cadastrar o modelo');
+            //this.alertsService.oneErrorMessage('Não foi possivel cadastrar o modelo');
           }
         });
       }

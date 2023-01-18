@@ -23,8 +23,6 @@ export class GuardService {
         return true;
       }
       else if (!user && localStorage.admin === false) {
-        this.alertsService.oneErrorMessage('O seu login expirou, por favor entre novamente no sistema');
-        this.storageService.clean();
 
         return false;
       }

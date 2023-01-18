@@ -36,7 +36,7 @@ export class GerenciarUsuarioComponent {
       this.dataSource.sort = this.sort || this.dataSource.sort;
     },
     erro => {
-      alertService.oneErrorMessage('Ocorreu um erro inesperado');
+      //alertService.oneErrorMessage('Ocorreu um erro inesperado');
     })
   }
 
