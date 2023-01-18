@@ -24,7 +24,7 @@ namespace CatalogoVeiculos.API.Controllers
         {
             try
             {
-                var acesso = await _usuarioAppService.BuscarUsuarioPorLoginSenha(login.Usuario, login.Senha);
+                var acesso = await _usuarioAppService.RecuperarUsuarioPorlogin(login.Usuario, login.Senha);
                 if (acesso == null)
                     return Unauthorized("Usuário não encontrado na base de dados");
 

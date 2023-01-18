@@ -34,9 +34,9 @@ namespace CatalogoVeiculos.Application.Service
             _configuration = configuration;
         }
 
-        public async Task<UsuarioDto> BuscarUsuarioPorLoginSenha(string login, string senha)
+        public async Task<UsuarioDto> RecuperarUsuarioPorlogin(string login, string senha)
         {
-            return _mapper.Map<UsuarioDto>(await _usuarioService.BuscarUsuarioPorloginSenha(login, senha));
+            return _mapper.Map<UsuarioDto>(await _usuarioService.RecuperarUsuarioPorlogin(login, senha));
         }
 
         public async Task<UsuarioDto> BuscarUsuarioPorLogin(string login)
