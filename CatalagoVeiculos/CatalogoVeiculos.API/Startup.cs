@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using CatalogoVeiculos.Application.Config;
+using CatalogoVeiculos.Application.Security;
 using CatalogoVeiculos.Infra.CrossCutting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
@@ -31,6 +32,34 @@ namespace CatalogoVeiculos.API
             IMapper mapper = config.CreateMapper();
             services.AddSingleton(mapper);
 
+
+            var signingConfigurations = new SigningConfigurations();
+            services.AddSingleton(signingConfigurations);
+
+            var tokenConfigurations = new TokenConfigurations();
+            new ConfigureFromConfigurationOptions<TokenConfigurations>(
+                //CONFIGURAÇÃO DO APPSETTINGS.JSON
+                Configuration.GetSection("TokenConfigurations"))
+                    .Configure(tokenConfigurations);
+            services.AddSingleton(tokenConfigurations);
+
+            services.AddAuthentication(authOptions =>
+            {
+                authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(bearerOptions =>
+            {
+                var paramsValidation = bearerOptions.TokenValidationParameters;
+                paramsValidation.IssuerSigningKey = signingConfigurations.Key;
+                paramsValidation.ValidAudience = tokenConfigurations.Audience;
+                paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
+                paramsValidation.ValidateIssuerSigningKey = true;
+                paramsValidation.ValidateLifetime = true;
+                paramsValidation.ClockSkew = TimeSpan.Zero;
+            });
+
+            
 
             services.AddControllers();
             
@@ -80,26 +109,6 @@ namespace CatalogoVeiculos.API
                            .AllowAnyHeader();
                 });
             });
-
-            var key = Encoding.ASCII.GetBytes(Auth.secret);
-            services.AddAuthentication(auth =>
-            {
-                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer(auth =>
-                {
-                    auth.RequireHttpsMetadata = false;
-                    auth.SaveToken = true;
-                    auth.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = false,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
-
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)

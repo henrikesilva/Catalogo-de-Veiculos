@@ -19,10 +19,10 @@
                             <p class="card-text titulo"> {{veiculo.modelo.marca.nomeMarca}}
                                 {{veiculo.modelo.nomeModelo}} {{veiculo.nome}}</p>
                             <p class="card-text subtitulo">R$ {{veiculo.preco}}</p>
-                            <div class="d-flex justify-content-center align-items-center">
+                            <div class="d-flex justify-content-center align-items-center" *ngIf="admin">
                                 <div class="btn-group">
-                                    <a type="button" class="btn btn-sm btn-outline-secondary"
-                                    [routerLink]="['/atualizar-veiculo/', veiculo.veiculoId]">Detalhes</a>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                    [routerLink]="['/atualizar-veiculo/', veiculo.veiculoId]">Detalhes</button>
                                 </div>
                             </div>
                         </div>

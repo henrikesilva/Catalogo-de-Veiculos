@@ -1,0 +1,31 @@
+<section class="container col-12 col-lg-12">
+    <div class="row">
+        <div class="col-10">
+            <h2>Gerenciar Marcas</h2>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="nomeModelo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="th">Nome Marca</th>
+                <td mat-cell *matCellDef="let marcas">{{marcas.nomeMarca}}</td>
+            </ng-container>
+            <ng-container matColumnDef="marcaId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                <td mat-cell *matCellDef="let marcas">
+                    <button mat-stroked-button color="primary" [routerLink]="['/atualizar-marca/', marcas.marcaId]" matTooltip="Atualizar" title="Editar">
+                        <mat-icon class="icone" id="edit">edit</mat-icon>
+                    </button>
+                    <!--<button mat-stroked-button color="warn" (click)="excluir(usuario)" matTooltip="Excluir">
+                        <mat-icon class="icone">delete</mat-icon>
+                    </button>-->
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 15]" aria-label="Selecione o número de itens por página"></mat-paginator>
+    </div>
+</section>

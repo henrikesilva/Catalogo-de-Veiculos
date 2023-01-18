@@ -60,7 +60,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var marcaCadastrada = await _marcaAppService.CadastrarMarca(marca);
                 if (marcaCadastrada)
-                    return Ok("A marca do veiculo foi cadastrada corretamente.");
+                    return Ok();
 
                 return BadRequest("Ocorreu um erro ao tentar cadastrar a marca");
 
@@ -78,7 +78,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var marcaAtualizada = await _marcaAppService.AtualizarMarca(marca);
                 if (marcaAtualizada)
-                    return Ok("A marca do veiculo foi atualizada corretamente.");
+                    return Ok();
 
                 return BadRequest("Ocorreu um erro ao tentar atualizar a marca");
             }
@@ -97,7 +97,7 @@ namespace CatalogoVeiculos.API.Controllers
                 if (marcaExcluida)
                     return BadRequest("Ocorreu um erro ao tentar excluir a marca");
 
-                return Ok("A marca do veiculo foi excluida corretamente.");
+                return Ok();
 
             }
             catch (ArgumentException ex)

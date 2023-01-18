@@ -684,6 +684,7 @@
         "dependencies": {
           "AutoMapper": "12.0.0",
           "CatalogoVeiculos.Domain": "1.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.25.1"
         },
         "compile": {

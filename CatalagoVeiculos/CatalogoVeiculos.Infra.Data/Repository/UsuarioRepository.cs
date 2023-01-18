@@ -81,20 +81,24 @@ namespace CatalogoVeiculos.Infra.Data.Repository
             {
                 using (var con = new SqlConnection(connection))
                 {
-                    var usuario = await con.QueryFirstAsync<Usuario>(loginUsuario,
+                    var usuario = await con.QueryFirstOrDefaultAsync<Usuario>(loginUsuario,
                                                                 new
                                                                 {
                                                                     LoginUsuario = login,
                                                                     Senha = senha
                                                                 });
 
-                    if (usuario.LoginUsuario != null)
+                    if (usuario != null)
                         return usuario;
 
                     return null;
                 }
             }
             catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch(Exception ex)
             {
                 throw ex;
             }

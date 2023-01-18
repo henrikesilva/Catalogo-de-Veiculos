@@ -26,19 +26,16 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var acesso = await _usuarioAppService.BuscarUsuarioPorLoginSenha(login.Usuario, login.Senha);
                 if (acesso == null)
-                    return Unauthorized("Não foi possivel efetuar o login");
+                    return Unauthorized("Usuário não encontrado na base de dados");
 
                 else
                 {
-                    var token = _usuarioAppService.Login(login);
-                    var returnRequest = new
-                    {
-                        Login = login.Usuario,
-                        Admin = acesso.Administrador,
-                        token
-                    };
+                    var result = _usuarioAppService.Login(acesso);
+                    if(result != null) 
+                        return Ok(result);
 
-                    return Ok(returnRequest);
+
+                    return Unauthorized(result);
                 }
             }
             catch(ArgumentException ex)
@@ -57,7 +54,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var usuarioCadastrado = await _usuarioAppService.CadastrarUsuario(usuario);
                 if (usuarioCadastrado)
-                    return Ok("Usuário cadastrado com sucesso!");
+                    return Ok();
 
                 return BadRequest("Ocorreu um erro ao cadastrar o usuário");
             }

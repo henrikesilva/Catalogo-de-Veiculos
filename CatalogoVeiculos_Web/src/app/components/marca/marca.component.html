@@ -1,0 +1,19 @@
+<section class="container">
+  <h2 style="text-align: center; margin-top: 5%;">{{tituloTela}} Marca</h2>
+  <form class="g-3 align-items-center" style="margin-top: 5%; align-items: center;">
+    <div class="col-md-12">
+      <label for="inputFoto" class="form-label">Nome Marca</label>
+      <input type="text" name="nomeMarca" class="form-control" placeholder="Insira a marca que você deseja cadastrar"
+        id="nomeMarca" [(ngModel)]="form.nomeMarca">
+    </div>
+
+    <div class="botoes">
+      <button class="btn btn-success" (click)="onSubmit()">
+        {{tituloTela}}
+      </button>
+      <button class="btn btn-danger" [routerLink]="['/']">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</section>

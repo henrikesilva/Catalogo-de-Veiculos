@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastrarVeiculosComponent } from './components/cadastrar-veiculos/cadastrar-veiculos.component';
+import { GerenciarMarcaComponent } from './components/gerenciar-marca/gerenciar-marca.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
+import { MarcaComponent } from './components/marca/marca.component';
 import { ContentComponent } from './components/template/content/content.component';
 import { GuardService } from './services/guard/guard.service';
 
@@ -34,7 +36,31 @@ const routes: Routes = [
         data: {
           expectedRole: true
         }
-      }
+      },
+      {
+        path: 'marcas',
+        component: GerenciarMarcaComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      },
+      {
+        path: 'cadastrar-marca',
+        component: MarcaComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      },
+      {
+        path: 'atualizar-marca/:marcaId',
+        component: MarcaComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      },
     ]
   },
   {

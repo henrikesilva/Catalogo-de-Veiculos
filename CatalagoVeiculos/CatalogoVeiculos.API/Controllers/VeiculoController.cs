@@ -65,7 +65,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var veiculoCadastrado = await _veiculosAppService.CadastrarVeiculo(veiculo);
                 if (veiculoCadastrado)
-                    return Ok("Veiculo cadastrado com sucesso!");
+                    return Ok();
 
                 return BadRequest("Ocorreu um erro ao cadastrar o veiculo");
             }
@@ -82,7 +82,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var veiculoAtualizado = await _veiculosAppService.AtualizarCadastroVeiculo(veiculo);
                 if (veiculoAtualizado)
-                    return Ok("Veiculo atualizado com sucesso");
+                    return Ok();
 
                 return BadRequest("Ocorreu um erro ao cadastrar o veiculo");
             }
@@ -99,7 +99,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var veiculoExcluido = await _veiculosAppService.ExcluirCadastroVeiculo(veiculo);
                 if (veiculoExcluido)
-                    return Ok("Veiculo excluido com sucesso");
+                    return Ok();
 
                 return BadRequest("Ocorreu um erro ao excluir o veiculo");
             }

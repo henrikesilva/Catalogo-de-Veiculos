@@ -16,4 +16,16 @@ export class MarcaService {
   listarMarcas() : Observable<Marca[]>{
     return this.http.get<Marca[]>(`${environment.apiBaseUrl}/Marca/BuscarTodas`);
   }
+
+  buscarMarcaPorId(marcaId: number) : Observable<Marca>{
+    return this.http.get<Marca>(`${environment.apiBaseUrl}/marca/buscar/${marcaId}`);
+  }
+
+  adicionarMarca(Marca: Marca) : Observable<Marca>{
+    return this.http.post<Marca>(`${environment.apiBaseUrl}/Marca/Adicionar`, Marca);
+  }
+
+  atualizarMarca(Marca: Marca) : Observable<Marca>{
+    return this.http.put<Marca>(`${environment.apiBaseUrl}/Marca/atualizar`, Marca);
+  }
 }

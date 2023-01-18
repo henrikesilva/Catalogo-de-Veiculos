@@ -77,7 +77,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var modeloCadastrado = await _modeloAppService.CadastrarModelo(modelo);
                 if (modeloCadastrado)
-                    return Ok("O modelo foi cadastrado corretamente.");
+                    return Ok();
 
                 return BadRequest("Ocorreu um erro ao tentar cadastrar o modelo");
             }
@@ -94,7 +94,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var modeloCadastrado = await _modeloAppService.AtualizarModelo(modelo);
                 if (modeloCadastrado)
-                    return Ok("O modelo foi atualizado corretamente.");
+                    return Ok();
 
                 return BadRequest("Ocorreu um erro ao tentar atualizar o modelo");
 
@@ -112,7 +112,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var modeloCadastrado = await _modeloAppService.ExcluirModelo(modelo);
                 if (modeloCadastrado)
-                    return Ok("O modelo foi excluido corretamente.");
+                    return Ok();
 
                 return BadRequest("Ocorreu um erro ao tentar excluir o modelo");
             }

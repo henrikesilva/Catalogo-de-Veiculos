@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
-using CatalogoVeiculos.Application.Config;
 using CatalogoVeiculos.Application.Dto;
 using CatalogoVeiculos.Application.Interface;
+using CatalogoVeiculos.Application.Security;
 using CatalogoVeiculos.Domain.Entities;
 using CatalogoVeiculos.Domain.Interfaces.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
+using System.Security.Principal;
 
 namespace CatalogoVeiculos.Application.Service
 {
@@ -15,10 +16,22 @@ namespace CatalogoVeiculos.Application.Service
     {
         private readonly IUsuarioService _usuarioService;
         private readonly IMapper _mapper;
-        public UsuarioAppService(IUsuarioService usuarioService, IMapper mapper)
+        private SigningConfigurations _signingConfigurations;
+        private TokenConfigurations _tokenConfigurations;
+        private IConfiguration _configuration;
+
+        public UsuarioAppService(
+            IUsuarioService usuarioService,
+            IMapper mapper,
+            SigningConfigurations signingConfigurations,
+            TokenConfigurations tokenConfigurations,
+            IConfiguration configuration)
         {
             _usuarioService = usuarioService;
             _mapper = mapper;
+            _signingConfigurations = signingConfigurations;
+            _tokenConfigurations = tokenConfigurations;
+            _configuration = configuration;
         }
 
         public async Task<UsuarioDto> BuscarUsuarioPorLoginSenha(string login, string senha)
@@ -37,30 +50,64 @@ namespace CatalogoVeiculos.Application.Service
             return usuarioCadastrado;
         }
 
-        public string Login(LoginDto login)
+        public async Task<object> Login(UsuarioDto login)
         {
             if(login != null)
             {
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(Auth.secret);
-                var tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(new Claim[]
-                    {
-                        new Claim(ClaimTypes.Name, login.Usuario),
-                        new Claim(ClaimTypes.Role, login.Administrador.ToString())
-                    }),
+                var identity = new ClaimsIdentity(
+                                 new GenericIdentity(login.LoginUsuario),
+                                 new[]
+                                 {
+                                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                                    new Claim(JwtRegisteredClaimNames.UniqueName, login.LoginUsuario),
+                                    new Claim(ClaimTypes.Role, login.Administrador.ToString())
+                                 }
+                );
 
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-                };
-
-                var token = tokenHandler.CreateToken(tokenDescriptor);
-                return tokenHandler.WriteToken(token);
+                DateTime createDate = DateTime.Now;
+                DateTime expirationDate = createDate + TimeSpan.FromHours(_tokenConfigurations.Hours);
+                
+                var handler = new JwtSecurityTokenHandler();
+                string token = CreateToken(identity, createDate, expirationDate, handler);
+                return SuccessObject(createDate, expirationDate, token, login);
             }
             else
             {
-                return null;
+                return new
+                {
+                    authenticated = false,
+                    message = "Falha ao autenticar"
+                };
             }
+        }
+
+        private string CreateToken(ClaimsIdentity identity, DateTime createDate, DateTime expirationDate, JwtSecurityTokenHandler handler)
+        {
+            var securityToken = handler.CreateToken(new SecurityTokenDescriptor
+            {
+                Issuer = _tokenConfigurations.Issuer,
+                Audience = _tokenConfigurations.Audience,
+                SigningCredentials = _signingConfigurations.SigningCredentials,
+                Subject = identity,
+                NotBefore = createDate,
+                Expires = expirationDate
+            });
+
+            var token = handler.WriteToken(securityToken);
+            return token;
+        }
+
+        private object SuccessObject(DateTime createDate, DateTime expirationDate, string token, UsuarioDto login)
+        {
+            return new
+            {
+                autheticated = true,
+                created = createDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                accesToken = token,
+                usuario = login.LoginUsuario,
+                Administrador = login.Administrador,
+                message = "Usuario auteticado com sucesso"
+            };
         }
     }
 }

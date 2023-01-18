@@ -18,7 +18,7 @@ export class GuardService {
     var user = this.storageService.isLoggedIn();
     var localStorage = this.storageService.getUser();
 
-    if(user && localStorage.admin === true){
+    if(user && localStorage.result.administrador === true){
         return true;
     }
     else if(!user && localStorage.admin === true){

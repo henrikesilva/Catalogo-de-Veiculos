@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "kXrSRFB754virDDqQ9y/PyrlYQ4rGnADHGXyil/6EZ7v6r49+5LHX0VWRuuXJfqo7whpuju/ibjHC8vOqwo8Mw==",
+  "dgSpecHash": "/auyYG4ZlE7I4EjzhAuTEdBZQ+oXSHBNKX9sXGjEPdkB6FFhRsAqBuItEYQiW3wi9e5UPNQ7k9Pq9krrlcjulg==",
   "success": true,
   "projectFilePath": "D:\\Dev\\Catalogo-de-Veiculos\\CatalagoVeiculos\\CatalogoVeiculos.Application\\CatalogoVeiculos.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rique\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\rique\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\rique\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.25.1\\microsoft.identitymodel.abstractions.6.25.1.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.25.1\\microsoft.identitymodel.jsonwebtokens.6.25.1.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\microsoft.identitymodel.logging\\6.25.1\\microsoft.identitymodel.logging.6.25.1.nupkg.sha512",
@@ -14,6 +16,7 @@
     "C:\\Users\\rique\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.25.1\\system.identitymodel.tokens.jwt.6.25.1.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\rique\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\rique\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
