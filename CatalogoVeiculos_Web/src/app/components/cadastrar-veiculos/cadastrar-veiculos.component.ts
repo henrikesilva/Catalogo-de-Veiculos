@@ -142,7 +142,6 @@ export class CadastrarVeiculosComponent implements OnInit {
         this.form.modelo.marca.nomeMarca = marca.nomeMarca;
       }
     }
-
   }
 
   buscarModelo(nome: any) {

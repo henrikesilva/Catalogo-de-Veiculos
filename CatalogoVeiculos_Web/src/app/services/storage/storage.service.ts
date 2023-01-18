@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/Models/Usuario';
+import { AlertService } from '../alerts/alert.service';
 
 const USER_KEY = 'auth-user';
 
@@ -9,11 +10,14 @@ const USER_KEY = 'auth-user';
 })
 export class StorageService {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router, 
+    private alertService: AlertService
+  ) { }
 
   clean(): void{
     localStorage.clear();
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
 
   public saveUser(usuario: Usuario): void{

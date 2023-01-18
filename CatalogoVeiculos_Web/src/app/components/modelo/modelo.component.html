@@ -1,0 +1,31 @@
+<section class="container">
+    <h2 style="text-align: center; margin-top: 5%;">{{tituloTela}} Modelo</h2>
+    <form class="g-3 align-items-center" style="margin-top: 5%; align-items: center;">
+        <div class="col-md-12">
+            <label for="inputModelo" class="form-label">Nome Modelo</label>
+            <input type="text" name="nomeModelo" class="form-control"
+                placeholder="Insira o Modelo que você deseja cadastrar" id="nomeModelo" [(ngModel)]="form.nomeModelo">
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+              <label for="marca">Marca</label>
+              <select name="marca" id="marca" #marca class="form-select" (change)="buscarMarca($any($event.target).value)" 
+                required>
+                <option *ngIf="cadastrar">Selecione a marca/montadora do veiculo...</option>
+                <option *ngIf="!cadastrar">{{form.marca.nomeMarca}}</option>
+                <option *ngFor="let marca of listaMarcas">
+                  {{marca.nomeMarca}}
+                </option>
+              </select>
+            </div>
+          </div>
+        <div class="botoes">
+            <button class="btn btn-success" (click)="onSubmit()">
+                {{tituloTela}}
+            </button>
+            <button class="btn btn-danger" [routerLink]="['/']">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</section>

@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastrarVeiculosComponent } from './components/cadastrar-veiculos/cadastrar-veiculos.component';
 import { GerenciarMarcaComponent } from './components/gerenciar-marca/gerenciar-marca.component';
+import { GerenciarModeloComponent } from './components/gerenciar-modelo/gerenciar-modelo.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { MarcaComponent } from './components/marca/marca.component';
+import { ModeloComponent } from './components/modelo/modelo.component';
 import { ContentComponent } from './components/template/content/content.component';
 import { GuardService } from './services/guard/guard.service';
 
@@ -56,6 +58,30 @@ const routes: Routes = [
       {
         path: 'atualizar-marca/:marcaId',
         component: MarcaComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      },
+      {
+        path: 'modelos',
+        component: GerenciarModeloComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      },
+      {
+        path: 'cadastrar-modelo',
+        component: ModeloComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      },
+      {
+        path: 'atualizar-modelo/:modeloId',
+        component: ModeloComponent,
         canActivate: [GuardService],
         data: {
           expectedRole: true

@@ -26,6 +26,8 @@ import { CadastrarVeiculosComponent } from './components/cadastrar-veiculos/cada
 import { InicioComponent } from './components/inicio/inicio.component';
 import { MarcaComponent } from './components/marca/marca.component';
 import { GerenciarMarcaComponent } from './components/gerenciar-marca/gerenciar-marca.component';
+import { ModeloComponent } from './components/modelo/modelo.component';
+import { GerenciarModeloComponent } from './components/gerenciar-modelo/gerenciar-modelo.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { GerenciarMarcaComponent } from './components/gerenciar-marca/gerenciar-
     CadastrarVeiculosComponent,
     InicioComponent,
     MarcaComponent,
-    GerenciarMarcaComponent
+    GerenciarMarcaComponent,
+    ModeloComponent,
+    GerenciarModeloComponent
   ],
   imports: [
     BrowserModule,

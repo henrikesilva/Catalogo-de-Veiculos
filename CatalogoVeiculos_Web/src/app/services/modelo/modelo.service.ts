@@ -17,7 +17,19 @@ export class ModeloService {
     return this.http.get<Modelo[]>(`${environment.apiBaseUrl}/Modelo/BuscarTodos`);
   }
   
+  buscarModeloPorId(modeloId: number) : Observable<Modelo>{
+    return this.http.get<Modelo>(`${environment.apiBaseUrl}/Modelo/Buscar/${modeloId}`);
+  }
+
   listarModeloPorMarca(marcaId: number) : Observable<Modelo[]>{
-    return this.http.get<Modelo[]>(`${environment.apiBaseUrl}/Modelo/buscarMarcas/${marcaId}`);
+    return this.http.get<Modelo[]>(`${environment.apiBaseUrl}/Modelo/BuscarMarcas/${marcaId}`);
+  }
+
+  adicionarModelo(modelo: Modelo) : Observable<Modelo>{
+    return this.http.post<Modelo>(`${environment.apiBaseUrl}/Modelo/Adicionar`, modelo);
+  }
+
+  atualizarModelo(modelo: Modelo) : Observable<Modelo>{
+    return this.http.put<Modelo>(`${environment.apiBaseUrl}/Modelo/Atualizar`, modelo);
   }
 }

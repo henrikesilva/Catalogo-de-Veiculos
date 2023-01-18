@@ -1,0 +1,23 @@
+div{
+    margin-top: 1%;
+}
+
+h2{
+    font-weight: bold;
+    font-size: xx-large;
+    text-decoration: underline;
+}
+
+label{
+    font-weight: 500;
+    font-size: larger;
+    margin-bottom: 1%;
+}
+
+button{
+    margin-right: 1%;
+}
+
+.botoes{
+    text-align: center;
+}

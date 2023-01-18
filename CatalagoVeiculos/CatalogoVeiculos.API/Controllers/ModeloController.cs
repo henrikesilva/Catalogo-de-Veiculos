@@ -87,7 +87,7 @@ namespace CatalogoVeiculos.API.Controllers
             }
         }
 
-        [HttpPost("Atualizar")]
+        [HttpPut("Atualizar")]
         public async Task<IActionResult> AtualizarModelo(ModeloDto modelo)
         {
             try

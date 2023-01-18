@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { mergeMap, Observable, retryWhen } from 'rxjs';
+import { delay, mergeMap, Observable, retryWhen } from 'rxjs';
 import { AlertService } from '../alerts/alert.service';
 import { StorageService } from '../storage/storage.service';
 
@@ -42,11 +42,13 @@ export class InterceptorService implements HttpInterceptor {
 
               case 500:
                 this.alertService.oneErrorMessage('ocorreu um erro inesperado, por gentileza contate o administrador');
+                this.router.navigate(['/']);
               break;
             }
           }
 
           this.alertService.oneErrorMessage('Não foi possivel estabelecer comunicação com o servidor interno, contate o administrador');
+          window.location.reload();
           throw error;
         })
       )
