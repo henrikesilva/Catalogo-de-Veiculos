@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Login } from 'src/app/Models/Login';
 import { AlertService } from 'src/app/services/alerts/alert.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
@@ -51,7 +50,7 @@ export class LoginComponent implements OnInit {
         this.alertsService.oneSuccessMessage('Login efetuado com sucesso.');
       },
       error: err => {
-        this.alertsService.oneErrorMessage('Ocorreu um erro ao tentar efetuar o Login');
+        this.alertsService.oneErrorMessage(`${err.error}`);
         this.isLoginFailed = true;
       }
     })

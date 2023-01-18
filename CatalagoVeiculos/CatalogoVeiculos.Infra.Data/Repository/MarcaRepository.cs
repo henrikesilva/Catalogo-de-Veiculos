@@ -26,7 +26,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
         private string cadastrarMarca = @"INSERT INTO Marca
 	                                                        (NomeMarca, StatusMarca)
                                                         VALUES
-	                                                        (@NomeMarca, StatusMarca)";
+	                                                        (@NomeMarca, @StatusMarca)";
 
         private string excluirMarca = @"UPDATE 
 	                                            Marca

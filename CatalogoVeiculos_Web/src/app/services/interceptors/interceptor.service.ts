@@ -41,7 +41,6 @@ export class InterceptorService implements HttpInterceptor {
 
               case 500:
                 this.alertService.oneErrorMessage('Ocorreu um erro inesperado, por gentileza contate o administrador');
-                this.router.navigate(['/']);
               break;
 
               default:

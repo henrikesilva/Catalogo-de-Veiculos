@@ -2,11 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { Marca } from 'src/app/Models/Marca';
 import { AlertService } from 'src/app/services/alerts/alert.service';
 import { MarcaService } from 'src/app/services/marca/marca.service';
-import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-gerenciar-marca',
@@ -24,7 +22,6 @@ export class GerenciarMarcaComponent{
   @ViewChild(MatSort) sort?: MatSort;
 
   constructor(
-    private router: Router,
     private marcaService: MarcaService,
     private alertService: AlertService
   ) {
@@ -38,7 +35,7 @@ export class GerenciarMarcaComponent{
       this.dataSource.sort = this.sort || this.dataSource.sort;
     },
     erro => {
-      //alertService.oneErrorMessage('Ocorreu um erro inesperado');
+      this.alertService.oneErrorMessage(`${erro.error}`);
     })
   }
 
@@ -57,9 +54,10 @@ export class GerenciarMarcaComponent{
     this.marcaService.excluirMarca(marcaId).subscribe({
       next: (s) => {
         this.alertService.oneSuccessMessage('Marca inativada com sucesso');
+        window.location.reload();
       },
       error: (e) => {
-        //this.alertService.oneErrorMessage('Não foi possivel inativar a marca');
+        this.alertService.oneErrorMessage(`${e.error}`);
       }
     });
   }

@@ -5,7 +5,6 @@ import { Modelo } from 'src/app/Models/Modelo';
 import { AlertService } from 'src/app/services/alerts/alert.service';
 import { MarcaService } from 'src/app/services/marca/marca.service';
 import { ModeloService } from 'src/app/services/modelo/modelo.service';
-import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-modelo',
@@ -15,6 +14,7 @@ import { StorageService } from 'src/app/services/storage/storage.service';
 export class ModeloComponent implements OnInit {
   tituloTela: string = '';
   cadastrar: boolean = false;
+  marcas: Marca[] = [];
 
   form: Modelo = {
     modeloId: 0,
@@ -33,7 +33,6 @@ export class ModeloComponent implements OnInit {
   constructor(
     private modeloService: ModeloService,
     private marcaService: MarcaService,
-    private storageService: StorageService,
     private alertsService: AlertService,
     private router: Router,
     private route: ActivatedRoute
@@ -65,13 +64,18 @@ export class ModeloComponent implements OnInit {
         }
       },
         error => {
-          this.alertsService.oneErrorMessage('Ocorreu um erro ao buscar a marca');
+          this.alertsService.oneErrorMessage(`${error.error}`);
         })
 
       this.tituloTela = 'Atualizar'
     }
 
-    this.marcaService.listarMarcas().subscribe(marca => this.listaMarcas = marca);
+    this.marcaService.listarMarcas().subscribe(marca => {
+      this.listaMarcas = marca
+      
+      this.verificarStatusMarca();
+    
+    });
   }
 
   buscarMarca(nome: any) {
@@ -97,8 +101,7 @@ export class ModeloComponent implements OnInit {
           this.router.navigate(['/modelos']); 
         },
         error: (e) => {
-          this.alertsService.oneErrorMessage('Não foi possivel atualizar o modelo');
-          console.log(e)
+          this.alertsService.oneErrorMessage(`${e.error}`);
         }
       });
     }
@@ -114,7 +117,7 @@ export class ModeloComponent implements OnInit {
             this.router.navigate(['/modelos']); 
           },
           error: (e) => {
-            //this.alertsService.oneErrorMessage('Não foi possivel cadastrar o modelo');
+            this.alertsService.oneErrorMessage(`${e.error}`);
           }
         });
       }
@@ -127,6 +130,14 @@ export class ModeloComponent implements OnInit {
     }
     else{
       this.form.statusModelo = false
+    }
+  }
+
+  verificarStatusMarca(){
+    for(var marca of this.listaMarcas){
+      if(marca.statusMarca){
+        this.marcas.push(marca);
+      }
     }
   }
 }

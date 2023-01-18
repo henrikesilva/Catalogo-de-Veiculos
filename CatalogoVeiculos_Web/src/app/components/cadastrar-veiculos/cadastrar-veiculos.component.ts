@@ -22,6 +22,8 @@ export class CadastrarVeiculosComponent implements OnInit {
   tituloTela: string = '';
   modeloHabilitado: boolean = false;
   cadastrar: boolean = false;
+  marcas: Marca[] = [];
+  modelos: Modelo[] = [];
 
   form: Veiculos = {
     nome: '',
@@ -110,14 +112,18 @@ export class CadastrarVeiculosComponent implements OnInit {
         }
       },
         error => {
-          this.alertsService.oneErrorMessage('Ocorreu um erro ao buscar o veiculo');
+          this.alertsService.oneErrorMessage(`${error.error}`);
         })
 
       this.tituloTela = 'Atualizar'
       this.habilitado = true;
     }
 
-    this.marcaService.listarMarcas().subscribe(marca => this.listaMarcas = marca);
+    this.marcaService.listarMarcas().subscribe(marca => {
+      this.listaMarcas = marca
+
+      this.verificarStatusMarca();
+    });
   }
 
   buscarMarca(nome: any) {
@@ -135,10 +141,12 @@ export class CadastrarVeiculosComponent implements OnInit {
             }
             else{
               this.listaModelos = s;
+
+              this.verificarStatusModelo();
             }
           },
           error: (e) => {
-            this.alertsService.oneErrorMessage('Ocorreu um erro ao processar os dados');
+            this.alertsService.oneErrorMessage(`${e.error}`);
           }
         });
         this.modeloHabilitado = true;
@@ -150,20 +158,18 @@ export class CadastrarVeiculosComponent implements OnInit {
     }
   }
 
-  buscarModelo(nome: any) {
-    var modelos = this.listaModelos.filter(function (obj) {
+  buscarModelo(nome: any) {    
+    var buscaModelo = this.listaModelos.filter(function (obj) {
       return obj.nomeModelo === nome;
     });
 
-    if (modelos)
-      for (const modelo of modelos) {
+    if (buscaModelo)
+      for (const modelo of buscaModelo) {
         this.form.modeloId = modelo.modeloId;
         this.form.modelo.modeloId = modelo.modeloId;
         this.form.modelo.nomeModelo = modelo.nomeModelo;
         this.habilitado = true;
       }
-
-
   }
 
   onSubmit(): void {
@@ -193,6 +199,24 @@ export class CadastrarVeiculosComponent implements OnInit {
     }
     else{
       this.form.statusVeiculo = false
+    }
+  }
+
+  verificarStatusMarca(){
+    for(var marca of this.listaMarcas){
+      if(marca.statusMarca){
+        this.marcas.push(marca);
+      }
+    }
+  }
+
+  verificarStatusModelo(){
+    this.modelos = [];
+
+    for(var modelo of this.listaModelos){
+      if(modelo.statusModelo){
+        this.modelos.push(modelo);
+      }
     }
   }
 }

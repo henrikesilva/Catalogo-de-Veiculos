@@ -95,9 +95,9 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var marcaExcluida = await _marcaAppService.ExcluirMarca(marcaId);
                 if (marcaExcluida)
-                    return BadRequest("Ocorreu um erro ao tentar excluir a marca");
+                    return Ok();
 
-                return Ok();
+                return BadRequest("Ocorreu um erro ao tentar excluir a marca");
 
             }
             catch (ArgumentException ex)

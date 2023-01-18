@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { Usuario } from 'src/app/Models/Usuario';
 import { AlertService } from 'src/app/services/alerts/alert.service';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
@@ -22,7 +21,6 @@ export class GerenciarUsuarioComponent {
   @ViewChild(MatSort) sort?: MatSort;
 
   constructor(
-    private router: Router,
     private usuarioService: UsuarioService,
     private alertService: AlertService
   ) {
@@ -36,7 +34,7 @@ export class GerenciarUsuarioComponent {
       this.dataSource.sort = this.sort || this.dataSource.sort;
     },
     erro => {
-      //alertService.oneErrorMessage('Ocorreu um erro inesperado');
+      this.alertService.oneErrorMessage(`${erro.error}`);
     })
   }
 
@@ -62,9 +60,10 @@ export class GerenciarUsuarioComponent {
     this.usuarioService.excluirUsuario(usuarioId).subscribe({
       next: (s) => {
         this.alertService.oneSuccessMessage('Usuario inativado com sucesso');
+        window.location.reload();
       },
       error: (e) => {
-        this.alertService.oneErrorMessage('Não foi possivel inativar o usuario');
+        this.alertService.oneErrorMessage(`${e.error}`);
       }
     });
   }

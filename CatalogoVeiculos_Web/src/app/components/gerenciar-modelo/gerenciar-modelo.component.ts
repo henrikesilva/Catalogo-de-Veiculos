@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 import { Modelo } from 'src/app/Models/Modelo';
 import { AlertService } from 'src/app/services/alerts/alert.service';
 import { ModeloService } from 'src/app/services/modelo/modelo.service';
-import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-gerenciar-modelo',
@@ -37,7 +36,7 @@ export class GerenciarModeloComponent {
       this.dataSource.sort = this.sort || this.dataSource.sort;
     },
     erro => {
-      //alertService.oneErrorMessage('Ocorreu um erro inesperado');
+      this.alertService.oneErrorMessage(`${erro.error}`);
     })
   }
 
@@ -56,10 +55,10 @@ export class GerenciarModeloComponent {
     this.modeloService.excluirModelo(modeloId).subscribe({
       next: (s) => {
         this.alertService.oneSuccessMessage('Modelo inativado com sucesso');
-        this.router.navigate(['/modelos']);
+        window.location.reload();
       },
       error: (e) => {
-        this.alertService.oneErrorMessage('Não foi possivel inativar o modelo');
+        this.alertService.oneErrorMessage(`${e.error}`);
       }
     });
   }

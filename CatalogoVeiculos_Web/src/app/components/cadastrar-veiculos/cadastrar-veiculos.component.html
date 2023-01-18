@@ -25,7 +25,7 @@
           <option *ngIf="cadastrar">Selecione a marca/montadora do veiculo...</option>
           <option *ngIf="!cadastrar">{{form.modelo.marca.nomeMarca}}</option>
           <optgroup label="---------------------------------------------------------">
-            <option *ngFor="let marca of listaMarcas">
+            <option *ngFor="let marca of marcas">
               {{marca.nomeMarca}}
             </option>
           </optgroup>
@@ -40,7 +40,7 @@
           <option *ngIf="cadastrar">Selecione o modelo do veiculo...</option >
           <option *ngIf="!cadastrar">{{form.modelo.nomeModelo}}</option>
           <li><hr class="dropdown-divider"></li>
-          <option *ngFor="let modelo of listaModelos">
+          <option *ngFor="let modelo of modelos">
             {{modelo.nomeModelo}}
           </option>
         </select>

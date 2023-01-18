@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/app/Models/ArquivoConfig';
 import { Veiculos } from 'src/app/Models/Veiculos';
 import { AlertService } from 'src/app/services/alerts/alert.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
@@ -18,7 +16,6 @@ export class InicioComponent implements OnInit {
   user: any;
 
   constructor(
-    private http: HttpClient,
     private router: Router,
     private veiculoService: VeiculoService,
     private alertsService: AlertService,
@@ -32,7 +29,7 @@ export class InicioComponent implements OnInit {
       this.veiculos = veiculo
     }, 
     err => {
-      //this.alertsService.oneErrorMessage('Ocorreu um erro ao buscar os veiculos cadastrados');
+      this.alertsService.oneErrorMessage(`${err.error}`);
     });
 
     this.user = this.storageService.getUser();
@@ -53,9 +50,10 @@ export class InicioComponent implements OnInit {
     this.veiculoService.excluirVeiculo(veiculoId).subscribe({
       next: (s) => {
         this.alertsService.oneSuccessMessage('Veiculo inativado com sucesso');
+        window.location.reload();
       },
       error: (e) => {
-        this.alertsService.oneErrorMessage('Não foi possivel inativar o veiculo');
+        this.alertsService.oneErrorMessage(`${e.error}`);
       }
     });
   }

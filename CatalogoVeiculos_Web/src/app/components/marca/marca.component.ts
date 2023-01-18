@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Marca } from 'src/app/Models/Marca';
 import { AlertService } from 'src/app/services/alerts/alert.service';
 import { MarcaService } from 'src/app/services/marca/marca.service';
-import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-marca',
@@ -22,7 +21,6 @@ export class MarcaComponent implements OnInit{
 
   constructor(
     private marcaService: MarcaService,
-    private storageService: StorageService,
     private alertsService: AlertService,
     private router: Router,
     private route: ActivatedRoute
@@ -47,7 +45,7 @@ export class MarcaComponent implements OnInit{
         }
       }, 
       error => {
-        this.alertsService.oneErrorMessage('Ocorreu um erro ao buscar a marca');
+        this.alertsService.oneErrorMessage(`${error.error}`);
       })
       
       this.tituloTela = 'Atualizar'
@@ -64,8 +62,7 @@ export class MarcaComponent implements OnInit{
           this.router.navigate(['/marcas']); 
         },
         error: (e) => {
-          this.alertsService.oneErrorMessage('Não foi possivel atualizar a marca');
-          console.log(e)
+          this.alertsService.oneErrorMessage(`${e.error}`);
         }
       });
     }
@@ -81,7 +78,7 @@ export class MarcaComponent implements OnInit{
             this.router.navigate(['/marcas']); 
           },
           error: (e) => {
-            //this.alertsService.oneErrorMessage('Não foi possivel cadastrar a marca');
+            this.alertsService.oneErrorMessage(`${e.error}`);
           }
         });
       }

@@ -21,7 +21,7 @@
           <option *ngIf="cadastrar">Selecione a marca/montadora do veiculo...</option>
           <option *ngIf="!cadastrar">{{form.marca.nomeMarca}}</option>
           <optgroup label="---------------------------------------------------------">
-            <option *ngFor="let marca of listaMarcas">
+            <option *ngFor="let marca of marcas">
               {{marca.nomeMarca}}
             </option>
           </optgroup>
