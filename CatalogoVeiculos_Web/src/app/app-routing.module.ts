@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { CadastrarVeiculosComponent } from './components/cadastrar-veiculos/cadastrar-veiculos.component';
 import { GerenciarMarcaComponent } from './components/gerenciar-marca/gerenciar-marca.component';
 import { GerenciarModeloComponent } from './components/gerenciar-modelo/gerenciar-modelo.component';
+import { GerenciarUsuarioComponent } from './components/gerenciar-usuario/gerenciar-usuario.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
 import { MarcaComponent } from './components/marca/marca.component';
 import { ModeloComponent } from './components/modelo/modelo.component';
 import { ContentComponent } from './components/template/content/content.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
 import { GuardService } from './services/guard/guard.service';
 
 const routes: Routes = [
@@ -87,6 +89,30 @@ const routes: Routes = [
           expectedRole: true
         }
       },
+      {
+        path: 'usuarios',
+        component: GerenciarUsuarioComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      },
+      {
+        path: 'cadastrar-usuario',
+        component: UsuarioComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      },
+      {
+        path: 'atualizar-usuario/:loginUsuario',
+        component: UsuarioComponent,
+        canActivate: [GuardService],
+        data: {
+          expectedRole: true
+        }
+      }
     ]
   },
   {

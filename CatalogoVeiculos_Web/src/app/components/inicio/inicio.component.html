@@ -10,7 +10,7 @@
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col" *ngFor="let veiculo of veiculos">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm" *ngIf="veiculo.statusVeiculo || admin">
                         <div class="d-flex justify-content-center align-items-center">
                             <img [src]="veiculo.foto" alt="imagem veiculo">
                         </div>
@@ -23,6 +23,9 @@
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
                                     [routerLink]="['/atualizar-veiculo/', veiculo.veiculoId]">Detalhes</button>
+                                    
+                                    <button type="button" class="btn btn-sm btn-outline-danger" (click)="excluir(veiculo.veiculoId)" 
+                                    [disabled]="!veiculo.statusVeiculo">Excluir</button>
                                 </div>
                             </div>
                         </div>

@@ -14,24 +14,33 @@ export class GuardService {
     private router: Router
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     var user = this.storageService.isLoggedIn();
     var localStorage = this.storageService.getUser();
 
-    if(user && localStorage.result.administrador === true){
+    if (localStorage) {
+      if (user && localStorage.result.administrador === true) {
         return true;
-    }
-    else if(!user && localStorage.admin === false){
-      this.alertsService.oneErrorMessage('O seu login expirou, por favor entre novamente no sistema');
-      this.storageService.clean();
+      }
+      else if (!user && localStorage.admin === false) {
+        this.alertsService.oneErrorMessage('O seu login expirou, por favor entre novamente no sistema');
+        this.storageService.clean();
 
-      return false;
+        return false;
+      }
+      else {
+        this.router.navigate(['/'], {
+          queryParams: { returnUrl: state.url }
+        });
+        return false;
+      }
     }
     else{
       this.router.navigate(['/'], {
-        queryParams: {returnUrl: state.url}
+        queryParams: { returnUrl: state.url }
       });
       return false;
     }
+
   }
 }

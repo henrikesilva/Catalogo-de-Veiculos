@@ -48,9 +48,9 @@ namespace CatalogoVeiculos.Domain.Services
             return modeloCadastrado;
         }
 
-        public async Task<bool> ExcluirModelo(Modelo modelo)
+        public async Task<bool> ExcluirModelo(int modeloId)
         {
-            var veiculoExcluido = await _modeloRepository.ExcluirModelo(modelo);
+            var veiculoExcluido = await _modeloRepository.ExcluirModelo(modeloId);
             return veiculoExcluido;
         }
     }

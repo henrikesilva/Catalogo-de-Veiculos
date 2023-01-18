@@ -3,6 +3,7 @@ using CatalogoVeiculos.Domain.Interfaces.Repository;
 using CatalogoVeiculos.Infra.Data.Context;
 using Dapper;
 using Microsoft.Extensions.Configuration;
+using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace CatalogoVeiculos.Infra.Data.Repository
@@ -14,20 +15,23 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                            Usuario
                                             SET
 	                                            Nome = @Nome,
-	                                            Administrador = @Administrador
+                                                Senha = @Senha,
+	                                            Administrador = @Administrador,
+                                                StatusUsuario = @StatusUsuario
                                             WHERE
 	                                            UsuarioId = @UsuarioId";
 
         private string cadastrarUsuario = @"INSERT INTO Usuario
-	                                                (Nome, LoginUsuario, Senha, Administrador)
+	                                                (Nome, LoginUsuario, Senha, Administrador, StatusUsuario)
                                                 VALUES
-	                                                (@Nome, @LoginUsuario, @Senha, @Administrador)";
+	                                                (@Nome, @LoginUsuario, @Senha, @Administrador, 1)";
 
         private string loginUsuario = @"SELECT 
 	                                        UsuarioId,
 	                                        LoginUsuario,
                                             Senha,
-	                                        Administrador
+	                                        Administrador,
+                                            StatusUsuario
                                         FROM
 	                                        Usuario
                                         WHERE
@@ -37,11 +41,29 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                        UsuarioId,
 	                                        LoginUsuario,
                                             Nome,
-	                                        Administrador
+	                                        Administrador,
+                                            StatusUsuario
                                         FROM
 	                                        Usuario
                                         WHERE
 	                                        LoginUsuario = @LoginUsuario";
+
+        private string buscarUsuarios = @"SELECT 
+	                                        UsuarioId,
+	                                        LoginUsuario,
+                                            Nome,
+	                                        Administrador,
+                                            StatusUsuario
+                                        FROM
+	                                        Usuario
+                                            ORDER BY(StatusUsuario) DESC";
+
+        private string excluirUsuario = @"UPDATE
+	                                            Usuario
+                                            SET
+                                                StatusUsuario = 0
+                                            WHERE
+	                                            UsuarioId = @UsuarioId";
         #endregion
 
         private string connection;
@@ -61,7 +83,9 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                                                 { 
                                                                     UsuarioId = usuario.UsuarioId,
                                                                     Nome = usuario.Nome,
-                                                                    Administrador = usuario.Administrador
+                                                                    Senha = usuario.Senha,
+                                                                    Administrador = usuario.Administrador,
+                                                                    StatusUsuario = usuario.StatusUsuario
                                                                 });
 
                     if(usuarioAtualizado == 1)
@@ -71,6 +95,10 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                 }
             }
             catch(SqlException ex)
+            {
+                throw ex;
+            }
+            catch(Exception ex)
             {
                 throw ex;
             }
@@ -103,7 +131,8 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                 Nome = "Teste Mocado",
                                 LoginUsuario = "Administrador",
                                 Senha = "gXqSIQDfasgmZuM6a+iIDg==",
-                                Administrador = true
+                                Administrador = true,
+                                StatusUsuario = true
                             };
                         }
                         
@@ -164,6 +193,51 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                         return true;
 
                     return false;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<bool> ExcluirUsuario(int usuarioId)
+        {
+            try
+            {
+                using (var con = new SqlConnection(connection))
+                {
+                    var usuarioAtualizado = await con.ExecuteAsync(excluirUsuario,
+                                                                new
+                                                                {
+                                                                    UsuarioId = usuarioId
+                                                                });
+
+                    if (usuarioAtualizado == 1)
+                        return true;
+
+                    return false;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<Usuario>> BuscarUsuarios()
+        {
+            try
+            {
+                using (var con = new SqlConnection(connection))
+                {
+                    var usuarios = await con.QueryAsync<Usuario>(buscarUsuarios);
+
+                    if (usuarios.Any())
+                        return usuarios.ToList();
+
+
+                    return new List<Usuario>();
                 }
             }
             catch (SqlException ex)

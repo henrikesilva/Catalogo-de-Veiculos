@@ -6,7 +6,7 @@ namespace CatalogoVeiculos.Application.Interface
     {
         Task<bool> CadastrarModelo(ModeloDto modelo);
         Task<bool> AtualizarModelo(ModeloDto modelo);
-        Task<bool> ExcluirModelo(ModeloDto modelo);
+        Task<bool> ExcluirModelo(int modeloId);
         Task<ModeloDto> BuscarModelo(int modeloId);
         Task<List<ModeloDto>> BuscarModeloPorMarca(int marcaId );
         Task<List<ModeloDto>> BuscarModelos();

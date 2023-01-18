@@ -88,12 +88,12 @@ namespace CatalogoVeiculos.API.Controllers
             }
         }
 
-        [HttpPost("Excluir")]
-        public async Task<IActionResult> ExcluirMarca(MarcaDto marca)
+        [HttpDelete("Excluir/{marcaId}")]
+        public async Task<IActionResult> ExcluirMarca(int marcaId)
         {
             try
             {
-                var marcaExcluida = await _marcaAppService.ExcluirMarca(marca);
+                var marcaExcluida = await _marcaAppService.ExcluirMarca(marcaId);
                 if (marcaExcluida)
                     return BadRequest("Ocorreu um erro ao tentar excluir a marca");
 

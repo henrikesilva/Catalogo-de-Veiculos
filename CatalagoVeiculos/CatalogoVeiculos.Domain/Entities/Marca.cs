@@ -4,5 +4,6 @@
     {
         public int MarcaId { get; set; }
         public string NomeMarca { get; set; }
+        public bool StatusMarca { get; set; }
     }
 }

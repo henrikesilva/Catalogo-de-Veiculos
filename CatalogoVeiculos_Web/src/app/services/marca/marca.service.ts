@@ -28,4 +28,8 @@ export class MarcaService {
   atualizarMarca(Marca: Marca) : Observable<Marca>{
     return this.http.put<Marca>(`${environment.apiBaseUrl}/Marca/atualizar`, Marca);
   }
+
+  excluirMarca(marcaId: number) : Observable<Marca>{
+    return this.http.delete<Marca>(`${environment.apiBaseUrl}/Marca/Excluir/${marcaId}`);
+  }
 }

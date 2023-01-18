@@ -31,20 +31,24 @@ export class CadastrarVeiculosComponent implements OnInit {
     marcaId: 0,
     modeloId: 0,
     usuarioId: 0,
+    statusVeiculo: true,
     usuario: {
       usuarioId: 0,
-      usuario: '',
+      loginUsuario: '',
       administrador: false,
+      statusUsuario: true,
       nome: '',
       senha: ''
     },
     modelo: {
       modeloId: 0,
       nomeModelo: '',
+      statusModelo: true,
       marcaId: 0,
       marca: {
         marcaId: 0,
-        nomeMarca: ''
+        nomeMarca: '',
+        statusMarca: true
       },
     }
   };
@@ -54,8 +58,9 @@ export class CadastrarVeiculosComponent implements OnInit {
   usuario: Usuario = {
     usuarioId: 0,
     nome: '',
-    usuario: '',
+    loginUsuario: '',
     administrador: false,
+    statusUsuario: true,
     senha: ''
   };
 
@@ -96,6 +101,7 @@ export class CadastrarVeiculosComponent implements OnInit {
           modeloId: veiculo.modelo.modeloId,
           dataCriacao: veiculo.dataCriacao,
           dataAtualizacao: veiculo.dataAtualizacao,
+          statusVeiculo: veiculo.statusVeiculo,
           marcaId: veiculo.modelo.marca.marcaId,
           modelo: veiculo.modelo,
           usuarioId: this.usuario.usuarioId,
@@ -165,6 +171,8 @@ export class CadastrarVeiculosComponent implements OnInit {
     this.form.usuario.senha = '';
     this.form.usuario = this.usuario;
 
+    this.atualizarStatus();
+
     if (this.form.veiculoId != 0) {
       this.veiculoService.atualizarVeiculo(this.form).subscribe(success => {
         this.alertsService.oneSuccessMessage('Veiculo atualizado com sucesso');
@@ -176,6 +184,15 @@ export class CadastrarVeiculosComponent implements OnInit {
         this.alertsService.oneSuccessMessage('Veiculo cadastrado com sucesso');
         this.router.navigate(['/']);
       });
+    }
+  }
+
+  atualizarStatus(){
+    if(this.form.statusVeiculo.toString() === "true"){
+      this.form.statusVeiculo = true
+    }
+    else{
+      this.form.statusVeiculo = false
     }
   }
 }

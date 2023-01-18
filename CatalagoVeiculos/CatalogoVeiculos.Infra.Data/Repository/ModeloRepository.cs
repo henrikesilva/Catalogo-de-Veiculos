@@ -15,20 +15,27 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                Modelo
                                 SET
 	                                NomeModelo = @NomeModelo,
+                                    StatusModelo = @StatusModelo,
 	                                MarcaId = @MarcaId
                                 WHERE
 	                                ModeloId = @ModeloId";
 
         private string cadastrarModelo = @"INSERT INTO Modelo
-	                                                    (NomeModelo, MarcaId)
+	                                                    (NomeModelo, StatusModelo, MarcaId)
                                                     VALUES
-	                                                    (@NomeModelo, @MarcaId)";
+	                                                    (@NomeModelo, @StatusModelo, @MarcaId)";
 
-        private string excluirModelo = @"DELETE FROM Modelo WHERE ModeloId = @ModeloId";
+        private string excluirModelo = @"UPDATE
+	                                            Modelo
+                                            SET
+	                                            StatusModelo = @StatusModelo
+                                            WHERE
+	                                            ModeloId = @ModeloId";
 
         private string buscarModelo = @"SELECT 
 	                                        MO.ModeloId,
 	                                        MO.NomeModelo,
+                                            MO.StatusModelo,
 	                                        MO.MarcaId,
 	                                        MA.NomeMarca
                                         FROM
@@ -40,22 +47,27 @@ namespace CatalogoVeiculos.Infra.Data.Repository
         private string buscarModeloPorMarca = @"SELECT 
 	                                        MO.ModeloId,
 	                                        MO.NomeModelo,
+                                            MO.StatusModelo,
 	                                        MO.MarcaId,
 	                                        MA.NomeMarca
                                         FROM
 	                                        Modelo AS MO (nolock)
 	                                        INNER JOIN Marca (nolock) AS MA ON MA.MarcaId = MO.MarcaId
                                         WHERE
-	                                        MO.MarcaId = @MarcaId";
+	                                        MO.MarcaId = @MarcaId
+                                        AND
+                                            MO.StatusModelo = 1";
 
         private string buscarModelos = @"SELECT 
 	                                        MO.ModeloId,
 	                                        MO.NomeModelo,
+                                            MO.StatusModelo,
 	                                        MO.MarcaId,
 	                                        MA.NomeMarca
                                         FROM
 	                                        Modelo AS MO (nolock)
-	                                        INNER JOIN Marca (nolock) AS MA ON MA.MarcaId = MO.MarcaId";
+	                                        INNER JOIN Marca (nolock) AS MA ON MA.MarcaId = MO.MarcaId
+                                            ORDER BY(StatusModelo) DESC";
         #endregion
 
         private string _connection;
@@ -75,6 +87,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                                                 {
                                                                     ModeloId = modelo.ModeloId,
                                                                     NomeModelo = modelo.NomeModelo,
+                                                                    StatusModelo = modelo.StatusModelo,
                                                                     MarcaId = modelo.MarcaId 
                                                                 });
 
@@ -189,6 +202,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                                                 new
                                                                 {
                                                                     NomeModelo = modelo.NomeModelo,
+                                                                    StatusModelo = 1,
                                                                     MarcaId = modelo.MarcaId
                                                                 });
 
@@ -204,7 +218,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
             }
         }
 
-        public async Task<bool> ExcluirModelo(Modelo modelo)
+        public async Task<bool> ExcluirModelo(int modeloId)
         {
             try
             {
@@ -213,7 +227,8 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                     var modeloExcluido = await con.ExecuteAsync(excluirModelo,
                                                                 new
                                                                 {
-                                                                    ModeloId = modelo.ModeloId
+                                                                    StatusModelo = false,
+                                                                    ModeloId = modeloId
                                                                 });
 
                     if (modeloExcluido == 1)

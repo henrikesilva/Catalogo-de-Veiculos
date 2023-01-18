@@ -4,6 +4,7 @@ using CatalogoVeiculos.Application.Interface;
 using CatalogoVeiculos.Application.Security;
 using CatalogoVeiculos.Domain.Entities;
 using CatalogoVeiculos.Domain.Interfaces.Services;
+using CatalogoVeiculos.Domain.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -108,6 +109,24 @@ namespace CatalogoVeiculos.Application.Service
                 Administrador = login.Administrador,
                 message = "Usuario auteticado com sucesso"
             };
+        }
+
+        public async Task<bool> AtualizarUsuario(UsuarioDto usuario)
+        {
+            var usuarioAtualizado = await _usuarioService.AtualizarUsuario(_mapper.Map<Usuario>(usuario));
+            return usuarioAtualizado;
+        }
+
+        public async Task<bool> ExcluirUsuario(int usuarioId)
+        {
+            var usuarioExcluido = await _usuarioService.ExcluirUsuario(_mapper.Map<int>(usuarioId));
+            return usuarioExcluido;
+        }
+
+        public async Task<List<UsuarioDto>> BuscarUsuarios()
+        {
+            var usuarios = _mapper.Map<List<UsuarioDto>>(await _usuarioService.BuscarUsuarios());
+            return usuarios;
         }
     }
 }

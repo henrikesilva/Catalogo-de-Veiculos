@@ -16,7 +16,8 @@ export class MarcaComponent implements OnInit{
 
   form: Marca = {
     marcaId: 0,
-    nomeMarca: ''
+    nomeMarca: '',
+    statusMarca: true
   };
 
   constructor(
@@ -41,7 +42,8 @@ export class MarcaComponent implements OnInit{
       this.marcaService.buscarMarcaPorId(id).subscribe(marca => {
         this.form = {
           marcaId: marca.marcaId,
-          nomeMarca: marca.nomeMarca
+          nomeMarca: marca.nomeMarca,
+          statusMarca: marca.statusMarca
         }
       }, 
       error => {
@@ -53,6 +55,8 @@ export class MarcaComponent implements OnInit{
   }
 
   onSubmit() : void{
+    this.atualizarStatus();
+
     if(this.form.marcaId != 0){
       this.marcaService.atualizarMarca(this.form).subscribe({
         next: (s) => {
@@ -81,6 +85,15 @@ export class MarcaComponent implements OnInit{
           }
         });
       }
+    }
+  }
+
+  atualizarStatus(){
+    if(this.form.statusMarca.toString() === "true"){
+      this.form.statusMarca = true
+    }
+    else{
+      this.form.statusMarca = false
     }
   }
 }

@@ -32,4 +32,8 @@ export class ModeloService {
   atualizarModelo(modelo: Modelo) : Observable<Modelo>{
     return this.http.put<Modelo>(`${environment.apiBaseUrl}/Modelo/Atualizar`, modelo);
   }
+
+  excluirModelo(modeloId: number) : Observable<Modelo>{
+    return this.http.delete<Modelo>(`${environment.apiBaseUrl}/Modelo/Excluir/${modeloId}`);
+  }
 }

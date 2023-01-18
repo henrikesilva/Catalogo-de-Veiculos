@@ -9,6 +9,7 @@ export class Veiculos{
     preco: number = 0.000;
     dataCriacao?: Date;
     dataAtualizacao?: Date;
+    statusVeiculo: boolean = true;
     modeloId: number = 0;
     marcaId: number = 0;
     usuarioId: number = 0;
@@ -17,7 +18,8 @@ export class Veiculos{
         usuarioId: 0,
         nome: '',
         administrador: false,
-        usuario: '',
+        loginUsuario: '',
+        statusUsuario: true,
         senha: ''
     };
 
@@ -25,9 +27,11 @@ export class Veiculos{
         modeloId: 0,
         nomeModelo: '',
         marcaId: 0,
+        statusModelo: true,
         marca: {
             marcaId: 0,
-            nomeMarca: ''
+            nomeMarca: '',
+            statusMarca: true
         }
     };
 }

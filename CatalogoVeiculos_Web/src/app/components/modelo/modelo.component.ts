@@ -19,10 +19,12 @@ export class ModeloComponent implements OnInit {
   form: Modelo = {
     modeloId: 0,
     nomeModelo: '',
+    statusModelo: true,
     marcaId: 0,
     marca: {
       marcaId: 0,
-      nomeMarca: ''
+      nomeMarca: '',
+      statusMarca: true
     }
   };
 
@@ -53,10 +55,12 @@ export class ModeloComponent implements OnInit {
         this.form = {
           modeloId: modelo.modeloId,
           nomeModelo: modelo.nomeModelo,
+          statusModelo: modelo.statusModelo,
           marcaId: modelo.marca.marcaId,
           marca: {
             marcaId: modelo.marca.marcaId,
-            nomeMarca: modelo.marca.nomeMarca
+            nomeMarca: modelo.marca.nomeMarca,
+            statusMarca: modelo.marca.statusMarca
           }
         }
       },
@@ -84,6 +88,8 @@ export class ModeloComponent implements OnInit {
   }
 
   onSubmit() : void{
+    this.atualizarStatus();
+
     if(this.form.modeloId != 0){
       this.modeloService.atualizarModelo(this.form).subscribe({
         next: (s) => {
@@ -112,6 +118,15 @@ export class ModeloComponent implements OnInit {
           }
         });
       }
+    }
+  }
+
+  atualizarStatus(){
+    if(this.form.statusModelo.toString() === "true"){
+      this.form.statusModelo = true
+    }
+    else{
+      this.form.statusModelo = false
     }
   }
 }

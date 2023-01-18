@@ -47,9 +47,9 @@ namespace CatalogoVeiculos.Application.Service
             return modeloCadastrado;
         }
 
-        public async Task<bool> ExcluirModelo(ModeloDto modelo)
+        public async Task<bool> ExcluirModelo(int modeloId)
         {
-            var modeloExcluido = await _modeloService.ExcluirModelo(_mapper.Map<Modelo>(modelo));
+            var modeloExcluido = await _modeloService.ExcluirModelo(_mapper.Map<int>(modeloId));
             return modeloExcluido;
         }
     }

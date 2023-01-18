@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Modelo } from 'src/app/Models/Modelo';
 import { AlertService } from 'src/app/services/alerts/alert.service';
 import { ModeloService } from 'src/app/services/modelo/modelo.service';
@@ -13,20 +14,23 @@ import { StorageService } from 'src/app/services/storage/storage.service';
   styleUrls: ['./gerenciar-modelo.component.css']
 })
 export class GerenciarModeloComponent {
-  displayedColumns: string[] = ['nomeModelo', 'nomeMarca', 'modeloId'];
+  displayedColumns: string[] = ['nomeModelo', 'nomeMarca', 'statusModelo', 'modeloId'];
   dataSource = new MatTableDataSource<Modelo>(ELEMENT_DATA);
   modelos: Modelo[] = [];
+  modelo: any;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
 
   constructor(
-    private storageService: StorageService,
+    private router: Router,
     private modeloService: ModeloService,
     private alertService: AlertService
   ) {
     modeloService.listarModelo().subscribe(modelo => {
       this.modelos = modelo;
+
+      this.converterStatus();
 
       this.dataSource = new MatTableDataSource<Modelo>(this.modelos);
       this.dataSource.paginator = this.paginator || this.dataSource.paginator;
@@ -37,6 +41,28 @@ export class GerenciarModeloComponent {
     })
   }
 
+  converterStatus(){
+    for(this.modelo of this.modelos){
+      if(this.modelo.statusModelo === true){
+        this.modelo.statusModelo = 'Ativo'
+      }
+      else{
+        this.modelo.statusModelo = 'Inativo'
+      }
+    }
+  }
+
+  excluir(modeloId: number){
+    this.modeloService.excluirModelo(modeloId).subscribe({
+      next: (s) => {
+        this.alertService.oneSuccessMessage('Modelo inativado com sucesso');
+        this.router.navigate(['/modelos']);
+      },
+      error: (e) => {
+        this.alertService.oneErrorMessage('Não foi possivel inativar o modelo');
+      }
+    });
+  }
 }
 
 const ELEMENT_DATA: Modelo[] = [];

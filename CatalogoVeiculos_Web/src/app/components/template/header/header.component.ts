@@ -39,6 +39,6 @@ export class HeaderComponent implements OnInit{
     this.storageService.clean();
     this.admin = false;
     this.alertsService.oneSuccessMessage('Logout efetuado com sucesso.');
-    return this.router.navigate(['/']);
+    window.location.reload();
   }
 }

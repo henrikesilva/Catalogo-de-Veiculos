@@ -17,6 +17,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                                Foto = @Foto,
 	                                                Preco = @Preco,
 	                                                DataAtualizacao = @DataAtualizacao,
+                                                    StatusVeiculo = @StatusVeiculo,
 	                                                ModeloId = @ModeloId,
                                                     UsuarioId = @UsuarioId
                                                 WHERE
@@ -25,12 +26,18 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 
         private string cadastrarVeiculo = @"INSERT INTO
                                                 Veiculo
-	                                                (Nome, Foto, Preco, DataCriacao, DataAtualizacao, ModeloId, UsuarioId)
+	                                                (Nome, Foto, Preco, DataCriacao, DataAtualizacao, StatusVeiculo, ModeloId, UsuarioId)
                                                 VALUES
-	                                                (@Nome, @Foto, @Preco, @DataCriacao, @DataAtualizacao, @ModeloId, @UsuarioId)";
+	                                                (@Nome, @Foto, @Preco, @DataCriacao, @DataAtualizacao, @StatusVeiculo, @ModeloId, @UsuarioId)";
 
 
-        private string excluirVeiculo = @"DELETE FROM Veiculo WHERE VeiculoId = @VeiculoId";
+        private string excluirVeiculo = @"UPDATE
+	                                                Veiculo
+                                                SET
+	                                                DataAtualizacao = @DataAtualizacao,
+                                                    StatusVeiculo = @StatusVeiculo
+                                                WHERE
+	                                                VeiculoId = @VeiculoId";
 
         private string buscarVeiculoPorId = @"SELECT 
 	                                                VE.VeiculoId,
@@ -39,6 +46,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                                VE.Preco,
 	                                                VE.DataCriacao,
 	                                                VE.DataAtualizacao,
+                                                    VE.StatusVeiculo,
 	                                                MO.ModeloId,
 	                                                MO.NomeModelo,
 	                                                MA.MarcaId,
@@ -60,6 +68,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
 	                                            VE.Preco,
 	                                            VE.DataCriacao,
 	                                            VE.DataAtualizacao,
+                                                VE.StatusVeiculo,
 	                                            MO.ModeloId,
 	                                            MO.NomeModelo,
 	                                            MA.MarcaId,
@@ -95,6 +104,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                                                     Foto = veiculo.Foto,
                                                                     Preco = veiculo.Preco,
                                                                     DataAtualizacao = veiculo.DataAtualizacao,
+                                                                    StatusVeiculo = veiculo.StatusVeiculo,
                                                                     ModeloId = veiculo.ModeloId
                                                                 });
 
@@ -125,6 +135,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                                                     Preco = veiculo.Preco,
                                                                     DataCriacao = veiculo.DataCriacao,
                                                                     DataAtualizacao = veiculo.DataAtualizacao,
+                                                                    StatusVeiculo = true,
                                                                     ModeloId = veiculo.ModeloId
                                                                 });
 
@@ -140,7 +151,7 @@ namespace CatalogoVeiculos.Infra.Data.Repository
             }
         }
 
-        public async Task<bool> ExcluirCadastroVeiculo(Veiculo veiculo)
+        public async Task<bool> ExcluirCadastroVeiculo(int veiculoId)
         {
             try
             {
@@ -149,7 +160,9 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                     var veiculoExcluido = await con.ExecuteAsync(excluirVeiculo,
                                                                 new
                                                                 {
-                                                                    VeiculoId = veiculo.VeiculoId
+                                                                    StatusVeiculo = false,
+                                                                    DataAtualizacao = DateTime.UtcNow.AddHours(-3d),
+                                                                    VeiculoId = veiculoId
                                                                 });
 
                     if (veiculoExcluido == 1)

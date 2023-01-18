@@ -26,4 +26,8 @@ export class VeiculoService {
   atualizarVeiculo(Veiculo: Veiculos) : Observable<Veiculos>{
     return this.http.put<Veiculos>(`${environment.apiBaseUrl}/veiculo/atualizar`, Veiculo);
   }
+
+  excluirVeiculo(veiculoId: number) : Observable<Veiculos>{
+    return this.http.delete<Veiculos>(`${environment.apiBaseUrl}/veiculo/Excluir/${veiculoId}`);
+  }
 }

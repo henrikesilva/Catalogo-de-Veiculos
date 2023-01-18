@@ -24,9 +24,11 @@
           required>
           <option *ngIf="cadastrar">Selecione a marca/montadora do veiculo...</option>
           <option *ngIf="!cadastrar">{{form.modelo.marca.nomeMarca}}</option>
-          <option *ngFor="let marca of listaMarcas">
-            {{marca.nomeMarca}}
-          </option>
+          <optgroup label="---------------------------------------------------------">
+            <option *ngFor="let marca of listaMarcas">
+              {{marca.nomeMarca}}
+            </option>
+          </optgroup>
         </select>
       </div>
     </div>
@@ -37,11 +39,19 @@
           required [disabled]="!modeloHabilitado">
           <option *ngIf="cadastrar">Selecione o modelo do veiculo...</option >
           <option *ngIf="!cadastrar">{{form.modelo.nomeModelo}}</option>
+          <li><hr class="dropdown-divider"></li>
           <option *ngFor="let modelo of listaModelos">
             {{modelo.nomeModelo}}
           </option>
         </select>
       </div>
+    </div>
+    <div class="col-md-12">
+      <label for="statusVeiculo">Status</label>
+        <select name="statusVeiculo" id="statusVeiculo" #marca class="form-select" [(ngModel)]="form.statusVeiculo" required>
+          <option value=true>Ativo</option>
+          <option value=false>Inativo</option>
+        </select>
     </div>
 
     <div class="botoes">

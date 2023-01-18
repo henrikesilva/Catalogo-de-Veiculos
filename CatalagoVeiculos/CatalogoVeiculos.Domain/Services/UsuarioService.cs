@@ -32,7 +32,7 @@ namespace CatalogoVeiculos.Domain.Services
         public async Task<Usuario> RecuperarUsuarioPorlogin(string login, string senha)
         {
             var usuario = await _usuarioRepository.RecuperarUsuarioPorlogin(login);
-            if (usuario == null)
+            if (usuario == null || usuario.StatusUsuario == false)
                 return null;
 
             var decriptado = new Criptografia().Decrypt(usuario.Senha);
@@ -42,7 +42,7 @@ namespace CatalogoVeiculos.Domain.Services
             }
             else
             {
-                if (usuario.LoginUsuario == login && decriptado == senha)
+                if (usuario.LoginUsuario.ToUpper() == login.ToUpper() && decriptado.ToUpper() == senha.ToUpper())
                 {
                     usuario.Senha = null;
                     return usuario;
@@ -60,6 +60,18 @@ namespace CatalogoVeiculos.Domain.Services
             usuario.Senha = new Criptografia().Encrypt(usuario.Senha);
             var usuarioCadastrado = await _usuarioRepository.CadastrarUsuario(usuario);
             return usuarioCadastrado;
+        }
+
+        public async Task<bool> ExcluirUsuario(int usuarioId)
+        {
+            var usuarioExcluido = await _usuarioRepository.ExcluirUsuario(usuarioId);
+            return usuarioExcluido;
+        }
+
+        public async Task<List<Usuario>> BuscarUsuarios()
+        {
+            var usuarios = await _usuarioRepository.BuscarUsuarios();
+            return usuarios;
         }
     }
 }

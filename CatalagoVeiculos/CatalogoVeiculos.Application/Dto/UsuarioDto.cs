@@ -7,6 +7,7 @@
         public string LoginUsuario { get; set; }
         public string? Senha { get; set; }
         public bool Administrador { get; set; }
+        public bool StatusUsuario { get; set; }
 
     }
 }

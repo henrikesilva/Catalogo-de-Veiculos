@@ -26,7 +26,7 @@ namespace CatalogoVeiculos.API.Controllers
             {
                 var acesso = await _usuarioAppService.RecuperarUsuarioPorlogin(login.Usuario, login.Senha);
                 if (acesso == null)
-                    return Unauthorized("Usuário não encontrado na base de dados");
+                    return Unauthorized();
 
                 else
                 {
@@ -84,5 +84,61 @@ namespace CatalogoVeiculos.API.Controllers
             }
         }
 
+        [HttpGet("BuscarTodos")]
+        public async Task<IActionResult> BuscarTodosUsuarios()
+        {
+            try
+            {
+                var usuarios = await _usuarioAppService.BuscarUsuarios();
+                if (usuarios.Any())
+                    return Ok(usuarios);
+
+                return NotFound("Não foram encontrados usuarios para essa busca");
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut("Atualizar")]
+        public async Task<IActionResult> AtualizarUsuario(UsuarioDto usuario)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                var usuarioCadastrado = await _usuarioAppService.AtualizarUsuario(usuario);
+                if (usuarioCadastrado)
+                    return Ok();
+
+                return BadRequest("Ocorreu um erro ao atualizar o usuário");
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpDelete("Excluir/{usuarioId}")]
+        public async Task<IActionResult> ExcluirUsuario(int usuarioId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                var usuarioCadastrado = await _usuarioAppService.ExcluirUsuario(usuarioId);
+                if (usuarioCadastrado)
+                    return Ok();
+
+                return BadRequest("Ocorreu um erro ao excluir o usuário");
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

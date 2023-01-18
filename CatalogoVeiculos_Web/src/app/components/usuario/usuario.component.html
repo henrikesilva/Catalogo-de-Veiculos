@@ -1,0 +1,42 @@
+<section class="container">
+    <h2 style="text-align: center; margin-top: 5%;">{{tituloTela}} Usuario</h2>
+    <form class="g-3 align-items-center" style="margin-top: 5%; align-items: center;">
+        <div class="col-md-12">
+            <label for="inputUsuario" class="form-label">Nome Usuario</label>
+            <input type="text" name="nomeUsuario" class="form-control"
+                placeholder="Insira o nome do usuario que você deseja cadastrar" id="nomeUsuario" [(ngModel)]="form.nome">
+        </div>
+        <div class="col-md-12">
+            <label for="inputLogin" class="form-label">Login Usuario</label>
+            <input type="text" name="loginUsuario" class="form-control"
+                placeholder="Insira o login do usuario que você deseja cadastrar" id="loginUsuario" [(ngModel)]="form.loginUsuario">
+        </div>
+        <div class="col-md-12">
+            <label for="inputSenha" class="form-label">Senha</label>
+            <input type="password" name="senha" class="form-control"
+                placeholder="Insira a senha usuario que você deseja cadastrar" id="senha" [(ngModel)]="form.senha">
+        </div>
+        <div class="col-md-12">
+            <label for="administrador">Administrador</label>
+            <select name="administrador" id="administrador" #administrador class="form-select" [(ngModel)]="form.administrador" required>
+                <option value=true>Sim</option>
+                <option value=false>Não</option>
+            </select>
+        </div>
+        <div class="col-md-12">
+            <label for="satus">Status</label>
+            <select name="satus" id="satus" #satus class="form-select" [(ngModel)]="form.statusUsuario" required>
+                <option value=true>Ativo</option>
+                <option value=false>Inativo</option>
+            </select>
+        </div>
+        <div class="botoes">
+            <button class="btn btn-success" (click)="onSubmit()">
+                {{tituloTela}}
+            </button>
+            <button class="btn btn-danger" [routerLink]="['/usuarios']">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</section>

@@ -28,6 +28,8 @@ import { MarcaComponent } from './components/marca/marca.component';
 import { GerenciarMarcaComponent } from './components/gerenciar-marca/gerenciar-marca.component';
 import { ModeloComponent } from './components/modelo/modelo.component';
 import { GerenciarModeloComponent } from './components/gerenciar-modelo/gerenciar-modelo.component';
+import { GerenciarUsuarioComponent } from './components/gerenciar-usuario/gerenciar-usuario.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { GerenciarModeloComponent } from './components/gerenciar-modelo/gerencia
     MarcaComponent,
     GerenciarMarcaComponent,
     ModeloComponent,
-    GerenciarModeloComponent
+    GerenciarModeloComponent,
+    GerenciarUsuarioComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,

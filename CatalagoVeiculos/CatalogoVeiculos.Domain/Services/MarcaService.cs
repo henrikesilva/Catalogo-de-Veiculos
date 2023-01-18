@@ -36,9 +36,9 @@ namespace CatalogoVeiculos.Domain.Services
             return marcaId;
         }
 
-        public async Task<bool> ExcluirMarca(Marca marca)
+        public async Task<bool> ExcluirMarca(int marcaId)
         {
-            var marcaExcluida = await _marcaRepository.ExcluirMarca(marca);
+            var marcaExcluida = await _marcaRepository.ExcluirMarca(marcaId);
             return marcaExcluida;
         }
     }

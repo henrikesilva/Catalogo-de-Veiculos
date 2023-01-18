@@ -13,9 +13,10 @@
         private DateTime _dataAtualizacao;
         public DateTime DataAtualizacao { get { return _dataAtualizacao; } set { _dataAtualizacao = (value == DateTime.MinValue ? DateTime.UtcNow.AddHours(-3d) : value); } }
 
-
+        public bool StatusVeiculo { get; set; }
         public int ModeloId { get; set; }
         public int UsuarioId { get; set; }
+
 
         public virtual Modelo Modelo { get; set; }
         public virtual Usuario Usuario { get; set; }

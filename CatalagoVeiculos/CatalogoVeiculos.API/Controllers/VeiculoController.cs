@@ -92,12 +92,12 @@ namespace CatalogoVeiculos.API.Controllers
             }
         }
 
-        [HttpDelete("excluir")]
-        public async Task<IActionResult> ExcluirVeiculo(VeiculoDto veiculo)
+        [HttpDelete("excluir/{veiculoId}")]
+        public async Task<IActionResult> ExcluirVeiculo(int veiculoId)
         {
             try
             {
-                var veiculoExcluido = await _veiculosAppService.ExcluirCadastroVeiculo(veiculo);
+                var veiculoExcluido = await _veiculosAppService.ExcluirCadastroVeiculo(veiculoId);
                 if (veiculoExcluido)
                     return Ok();
 

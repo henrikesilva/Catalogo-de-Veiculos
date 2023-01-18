@@ -23,10 +23,6 @@ namespace CatalogoVeiculos.Domain.Services
 
         public async Task<bool> CadastrarVeiculo(Veiculo veiculo)
         {
-            /*var marcaCadastrada = await _marcaService.BuscarMarca(veiculo.Modelo.Marca.MarcaId);
-            if(marcaCadastrada.MarcaId == 0)
-                return false;*/
-
             var modeloCadastrado = await _modeloService.BuscarModelo(veiculo.ModeloId);
             if (modeloCadastrado.ModeloId == 0)
                 return false;
@@ -36,9 +32,9 @@ namespace CatalogoVeiculos.Domain.Services
             return veiculoCadastrado;
         }
 
-        public async Task<bool> ExcluirCadastroVeiculo(Veiculo veiculo)
+        public async Task<bool> ExcluirCadastroVeiculo(int veiculoId)
         {
-            var cadastroVeiculoExcluido = await _veiculoRepository.ExcluirCadastroVeiculo(veiculo);
+            var cadastroVeiculoExcluido = await _veiculoRepository.ExcluirCadastroVeiculo(veiculoId);
             return cadastroVeiculoExcluido;
         }
 

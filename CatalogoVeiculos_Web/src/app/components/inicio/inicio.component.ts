@@ -48,4 +48,15 @@ export class InicioComponent implements OnInit {
   detalhesVeiculo(veiculoId: number){
     this.router.navigate([`atualizar-veiculo/${veiculoId}`]);
   }
+
+  excluir(veiculoId: number){
+    this.veiculoService.excluirVeiculo(veiculoId).subscribe({
+      next: (s) => {
+        this.alertsService.oneSuccessMessage('Veiculo inativado com sucesso');
+      },
+      error: (e) => {
+        this.alertsService.oneErrorMessage('Não foi possivel inativar o veiculo');
+      }
+    });
+  }
 }

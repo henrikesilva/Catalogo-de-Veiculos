@@ -14,5 +14,7 @@ namespace CatalogoVeiculos.Application.Dto
 
         [Required(ErrorMessage = "O campo NomeMarca é obrigatório")]
         public string NomeMarca { get; set; }
+        public bool StatusMarca { get; set; }
+
     }
 }

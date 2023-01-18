@@ -18,29 +18,36 @@ namespace CatalogoVeiculos.Infra.Data.Repository
         private string atualizarMarca = @"UPDATE 
 	                                            Marca
                                             SET
-	                                            NomeMarca = @NomeMarca
+	                                            NomeMarca = @NomeMarca,
+                                                StatusMarca = @StatusMarca
                                             WHERE
 	                                            MarcaId = @MarcaId";
 
         private string cadastrarMarca = @"INSERT INTO Marca
-	                                                        (NomeMarca)
+	                                                        (NomeMarca, StatusMarca)
                                                         VALUES
-	                                                        (@NomeMarca)";
+	                                                        (@NomeMarca, StatusMarca)";
 
-        private string excluirMarca = @"DELETE FROM Marca WHERE MarcaId = @MarcaId";
+        private string excluirMarca = @"UPDATE 
+	                                            Marca
+                                            SET
+                                                StatusMarca = @StatusMarca
+                                            WHERE
+	                                            MarcaId = @MarcaId";
 
         private string buscarMarca = @"SELECT 
 	                                        * 
                                         FROM 
 	                                        Marca(nolock)
                                         WHERE
-	                                        MarcaId = @MarcaId ";
+	                                        MarcaId = @MarcaId";
         
 
         private string buscarMarcas = @"SELECT 
 	                                        * 
                                         FROM 
-	                                        Marca(nolock)";
+	                                        Marca(nolock)
+                                            ORDER BY(StatusMarca) DESC";
         #endregion
 
         private string _connection;
@@ -59,7 +66,8 @@ namespace CatalogoVeiculos.Infra.Data.Repository
                                                                     new
                                                                     {
                                                                         MarcaId = marca.MarcaId,
-                                                                        NomeMarca = marca.NomeMarca
+                                                                        NomeMarca = marca.NomeMarca,
+                                                                        StatusMarca = marca.StatusMarca
                                                                     });
 
                     if (veiculoAtualizado == 1)
@@ -121,10 +129,11 @@ namespace CatalogoVeiculos.Infra.Data.Repository
             {
                 using(var con = new SqlConnection(_connection))
                 {
-                    var marcaCadastrada = await con.ExecuteAsync(cadastrarMarca, 
+                    var marcaCadastrada = await con.ExecuteAsync(cadastrarMarca,
                                                                 new
                                                                 {
-                                                                    NomeMarca = marca.NomeMarca
+                                                                    NomeMarca = marca.NomeMarca,
+                                                                    StatusMarca = marca.StatusMarca
                                                                 });
 
                     if (marcaCadastrada == 1)
@@ -139,17 +148,18 @@ namespace CatalogoVeiculos.Infra.Data.Repository
             }
         }
 
-        public async Task<bool> ExcluirMarca(Marca marca)
+        public async Task<bool> ExcluirMarca(int marcaId)
         {
             try
             {
                 using (var con = new SqlConnection(_connection))
                 {
                     var marcaExcluida = await con.ExecuteAsync(excluirMarca,
-                                                                new
-                                                                {
-                                                                    MarcaId = marca.MarcaId
-                                                                });
+                                                                    new
+                                                                    {
+                                                                        MarcaId = marcaId,
+                                                                        StatusMarca = false
+                                                                    });
 
                     if (marcaExcluida == 1)
                         return true;

@@ -1,7 +1,8 @@
 export class Usuario{
     usuarioId: number = 0;
     nome: string = '';
-    usuario: string = '';
-    administrador?: boolean;
+    loginUsuario: string = '';
     senha: string = ''
+    administrador: boolean = false;
+    statusUsuario: boolean = true;
 }

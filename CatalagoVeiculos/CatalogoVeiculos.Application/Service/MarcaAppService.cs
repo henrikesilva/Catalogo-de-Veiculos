@@ -41,9 +41,9 @@ namespace CatalogoVeiculos.Application.Service
             return marcaCadastrada;
         }
 
-        public async Task<bool> ExcluirMarca(MarcaDto marca)
+        public async Task<bool> ExcluirMarca(int marcaId)
         {
-            var marcaExcluida = await _marcaService.ExcluirMarca(_mapper.Map<Marca>(marca));
+            var marcaExcluida = await _marcaService.ExcluirMarca(_mapper.Map<int>(marcaId));
             return marcaExcluida;
         }
     }
