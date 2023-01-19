@@ -136,10 +136,10 @@ export class CadastrarVeiculosComponent implements OnInit {
       for (const marca of marcas) {
         this.modeloService.listarModeloPorMarca(marca.marcaId).subscribe({
           next: (s) => {
-            if(s.length === 0){
+            if (s.length === 0) {
               this.alertsService.oneErrorMessage('Não foram encontrados modelos cadastrados para essa marca, por gentileza cadastre o modelo para continuar');
             }
-            else{
+            else {
               this.listaModelos = s;
 
               this.verificarStatusModelo();
@@ -158,7 +158,7 @@ export class CadastrarVeiculosComponent implements OnInit {
     }
   }
 
-  buscarModelo(nome: any) {    
+  buscarModelo(nome: any) {
     var buscaModelo = this.listaModelos.filter(function (obj) {
       return obj.nomeModelo === nome;
     });
@@ -177,44 +177,49 @@ export class CadastrarVeiculosComponent implements OnInit {
     this.form.usuario.senha = '';
     this.form.usuario = this.usuario;
 
-    this.atualizarStatus();
-
-    if (this.form.veiculoId != 0) {
-      this.veiculoService.atualizarVeiculo(this.form).subscribe(success => {
-        this.alertsService.oneSuccessMessage('Veiculo atualizado com sucesso');
-        this.router.navigate(['/']);
-      });
+    if (this.form.usuarioId === 0) {
+      this.alertsService.oneErrorMessage("Por gentileza efetue o logon e utilize um usuario cadastrado no banco de dados para continuar o cadastro");
     }
     else {
-      this.veiculoService.adicionarVeiculo(this.form).subscribe(success => {
-        this.alertsService.oneSuccessMessage('Veiculo cadastrado com sucesso');
-        this.router.navigate(['/']);
-      });
+      this.atualizarStatus();
+
+      if (this.form.veiculoId != 0) {
+        this.veiculoService.atualizarVeiculo(this.form).subscribe(success => {
+          this.alertsService.oneSuccessMessage('Veiculo atualizado com sucesso');
+          this.router.navigate(['/']);
+        });
+      }
+      else {
+        this.veiculoService.adicionarVeiculo(this.form).subscribe(success => {
+          this.alertsService.oneSuccessMessage('Veiculo cadastrado com sucesso');
+          this.router.navigate(['/']);
+        });
+      }
     }
   }
 
-  atualizarStatus(){
-    if(this.form.statusVeiculo.toString() === "true"){
+  atualizarStatus() {
+    if (this.form.statusVeiculo.toString() === "true") {
       this.form.statusVeiculo = true
     }
-    else{
+    else {
       this.form.statusVeiculo = false
     }
   }
 
-  verificarStatusMarca(){
-    for(var marca of this.listaMarcas){
-      if(marca.statusMarca){
+  verificarStatusMarca() {
+    for (var marca of this.listaMarcas) {
+      if (marca.statusMarca) {
         this.marcas.push(marca);
       }
     }
   }
 
-  verificarStatusModelo(){
+  verificarStatusModelo() {
     this.modelos = [];
 
-    for(var modelo of this.listaModelos){
-      if(modelo.statusModelo){
+    for (var modelo of this.listaModelos) {
+      if (modelo.statusModelo) {
         this.modelos.push(modelo);
       }
     }
