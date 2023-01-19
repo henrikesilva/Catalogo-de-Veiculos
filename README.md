@@ -18,7 +18,9 @@ Para o correto funcionamento do sistema você deverá ter pré instalado
 - NodeJs a partir da versão v18.12.1
 - Npm 8.19.2
 
-As versões aqui indicadas são as mesmas utilizadas na criação do projeto. É indicado utilizar as mesmas para evitar a utilização de alguma ferramenta que possa estar desatualizado em versões posteriores ou ainda não oferecerem suporte em versões anteriores.
+As versões aqui indicadas são as mesmas utilizadas na criação do projeto. 
+
+É indicado utilizar as mesmas para evitar a utilização de alguma ferramenta que possa estar desatualizado em versões posteriores ou ainda não oferecerem suporte em versões anteriores.
 
 ### Configuração do Banco de Dados
 <img src="https://github.com/henrikesilva/Catalogo-de-Veiculos/blob/main/Banco%20de%20Dados/mer.png" title="hover text">
